@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roatán Visitor Guide - Island in the Sun Rentals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .property-card {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e0e7ff;
+        }
+
+        .property-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .property-card ul {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .property-card li {
+            padding: 5px 0;
+        }
+
+        .property-card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .tiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tile {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .tile-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .tile h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .tile p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .section-content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .section-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section-content h3 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .section-content h4 {
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section-content ul, .section-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+        }
+
+        .section-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .section-content table thead {
+            background: #667eea;
+            color: white;
+        }
+
+        .section-content table th,
+        .section-content table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .section-content table tbody tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+        }
+
+        .highlight-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff4e6;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        a {
+            color: #667eea;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .section-content {
+                padding: 20px;
+            }
+
+            .section-content table {
+                font-size: 0.9em;
+            }
+
+            .tiles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌴 Roatán Travel Guide</h1>
+            <p>Your Complete Island in the Sun Guide</p>
+        </header>
+
+        <div id="home-view">
+            <div class="intro-section">
+                <h2>🌴 Welcome to our Roatán Guide</h2>
+                <p>Welcome to the Island in the Sun Roatán Travel Guide — created to help you plan confidently, avoid common mistakes, and experience the best of this incredible island.</p>
+                <p>Roatán is the largest and most visited of the Bay Islands of Honduras, known for its world-class coral reef, warm Caribbean waters, friendly local culture, and relaxed island atmosphere. Whether you're coming for diving, beaches, adventure, food, or simply sunshine and quiet, Roatán offers something for every type of traveler — families, couples, digital nomads, retirees, cruise visitors, and long-term explorers.</p>
+                
+                <h3 style="color: #667eea; margin-top: 30px;">Who We Are</h3>
+                <p>Island in the Sun Rentals is a small, family-run company — just the two of us, based in North Carolina — with deep roots in Roatán. We own two vacation properties in West Bay and spend about a month on the island every year. We were married here, hosted 80 guests for the wedding, returned for our 10-year anniversary with 50 more, and have volunteered, explored, and built friendships across the island.</p>
+
+                <h3 style="color: #667eea; margin-top: 30px;">Our West Bay Rentals</h3>
+                <div class="properties">
+                    <div class="property-card">
+                        <h3>🏡 Dolphin Villa @ Ocean One</h3>
+                        <ul>
+                            <li>✔ 3 bedrooms / 5 bathrooms</li>
+                            <li>✔ New construction (2024)</li>
+                            <li>✔ Private pool + rooftop jacuzzi</li>
+                            <li>✔ Full Paradise Beach Hotel amenities</li>
+                            <li>✔ 3-minute walk to West Bay Beach</li>
+                        </ul>
+                        <a href="https://DolphinVillaRoatan.com" target="_blank">🔗 DolphinVillaRoatan.com →</a>
+                    </div>
+                    <div class="property-card">
+                        <h3>🌊 Infinity Bay Condo #1003</h3>
+                        <ul>
+                            <li>✔ 1-bedroom oceanfront</li>
+                            <li>✔ Fully renovated December 2025</li>
+                            <li>✔ Sleeps up to 4</li>
+                            <li>✔ Inside Infinity Bay Resort</li>
+                            <li>✔ Steps to beach, pool & dining</li>
+                        </ul>
+                        <a href="https://InfinityBay1003.com" target="_blank">🔗 InfinityBay1003.com →</a>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px;"><strong>Disclaimer:</strong> We do our best to keep this guide accurate and up to date, but things on Roatán can change quickly — prices, schedules, policies, and availability may vary without notice. Always double-check important details directly with the business, service provider, or official source.</p>
+            </div>
+
+            <div class="tiles-grid">
+                <a href="#" class="tile" data-section="why-roatan">
+                    <div class="tile-icon">🏝️</div>
+                    <h3>Why Roatán?</h3>
+                    <p>Discover why travelers love Roatán vs. other Caribbean islands</p>
+                </a>
+
+                <a href="#" class="tile" data-section="where-to-stay">
+                    <div class="tile-icon">🏖️</div>
+                    <h3>Where to Stay</h3>
+                    <p>Complete guide to West Bay, West End, Sandy Bay & more</p>
+                </a>
+
+                <a href="#" class="tile" data-section="before-travel">
+                    <div class="tile-icon">✈️</div>
+                    <h3>Before You Travel</h3>
+                    <p>Passport, weather, booking advice & what to expect</p>
+                </a>
+
+                <a href="#" class="tile" data-section="packing">
+                    <div class="tile-icon">🎒</div>
+                    <h3>What to Pack</h3>
+                    <p>Essential items, toiletries & what NOT to bring</p>
+                </a>
+
+                <a href="#" class="tile" data-section="arrival">
+                    <div class="tile-icon">🛬</div>
+                    <h3>Arrival & Airport</h3>
+                    <p>Navigate RTB airport smoothly with insider tips</p>
+                </a>
+
+                <a href="#" class="tile" data-section="transportation">
+                    <div class="tile-icon">🚕</div>
+                    <h3>Transportation</h3>
+                    <p>Taxis, water taxis, car rentals & getting around</p>
+                </a>
+
+                <a href="#" class="tile" data-section="money">
+                    <div class="tile-icon">💸</div>
+                    <h3>Money & Tipping</h3>
+                    <p>Currency, ATMs, credit cards & tipping guide</p>
+                </a>
+
+                <a href="#" class="tile" data-section="food">
+                    <div class="tile-icon">🍽️</div>
+                    <h3>Food & Groceries</h3>
+                    <p>Local cuisine, grocery stores & what to try</p>
+                </a>
+
+                <a href="#" class="tile" data-section="restaurants">
+                    <div class="tile-icon">🍕</div>
+                    <h3>Restaurant Recommendations</h3>
+                    <p>Our personal favorite spots in West Bay & West End</p>
+                </a>
+
+                <a href="#" class="tile" data-section="activities">
+                    <div class="tile-icon">🎯</div>
+                    <h3>Excursions & Activities</h3>
+                    <p>Snorkeling, diving, wildlife encounters & adventures</p>
+                </a>
+
+                <a href="#" class="tile" data-section="safety">
+                    <div class="tile-icon">⚕️</div>
+                    <h3>Safety & Medical</h3>
+                    <p>Emergency numbers, medical care & health precautions</p>
+                </a>
+
+                <a href="#" class="tile" data-section="utilities">
+                    <div class="tile-icon">🔌</div>
+                    <h3>Power & Utilities</h3>
+                    <p>What every traveler needs to know about island infrastructure</p>
+                </a>
+
+                <a href="#" class="tile" data-section="faq">
+                    <div class="tile-icon">❓</div>
+                    <h3>Top FAQs</h3>
+                    <p>Quick answers to the most common questions</p>
+                </a>
+            </div>
+        </div>
+
+        <div id="content-view"></div>
+    </div>
+
+    <footer>
+        <p>🌴 Island in the Sun Rentals | <a href="https://IslandInTheSunRentals.com" style="color: white;" target="_blank">IslandInTheSunRentals.com</a></p>
+        <p>Based in North Carolina with ❤️ for Roatán</p>
+    </footer>
+
+    <script>
+        const sections = {
+            'why-roatan': `
+                <h2>🏝️ Why Travelers Love Roatán</h2>
+                
+                <div class="success-box">
+                    <ul>
+                        <li>💲 More affordable than Aruba, Cayman, St. Thomas, or Turks & Caicos</li>
+                        <li>🤗 Friendly, English-speaking island culture with Caribbean + Latin roots</li>
+                        <li>🍽️ Lower food + activity costs compared to most Caribbean islands</li>
+                        <li>🏖️ No sargassum seaweed on West Bay Beach (protected by reef + currents)</li>
+                        <li>🌊 World-class snorkeling & diving right from the beach</li>
+                        <li>🐠 Coral reef begins just 5–30 ft from shore — no boat required</li>
+                        <li>🦈 Marine life hotspot: turtles, eagle rays, tropical fish, dolphins</li>
+                        <li>✅ Less commercialized — still feels like a real island, not a resort strip</li>
+                        <li>✅ Perfect mix of relaxation + adventure (beach, jungle, reef, activities)</li>
+                        <li>✈️ Direct flights from Miami, Atlanta, Dallas, Houston, Toronto, Montreal (seasonal)</li>
+                    </ul>
+                </div>
+            `,
+            
+            'where-to-stay': `
+                <h2>🏝️ Where to Stay in Roatán</h2>
+                
+                <p>Roatán offers a variety of regions, each with a different feel, budget level, and convenience. Where you stay depends on what matters most to you (beach access, nightlife, quiet nature, diving culture, etc.).</p>
+
+                <h3>Quick Comparison</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Best For</th>
+                            <th>Walkable?</th>
+                            <th>Good Beach?</th>
+                            <th>Nightlife</th>
+                            <th>Car Needed?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>West Bay</strong></td>
+                            <td>Families, couples, first-timers</td>
+                            <td>✅ Yes</td>
+                            <td>✅ Best beach</td>
+                            <td>🚫 Low</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>West End</strong></td>
+                            <td>Divers, budget, nightlife</td>
+                            <td>✅ Yes</td>
+                            <td>🟡 Mixed</td>
+                            <td>✅ High</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sandy Bay</strong></td>
+                            <td>Peace, longer stays</td>
+                            <td>🚫 Not really</td>
+                            <td>🟡 Mixed</td>
+                            <td>🚫 Low</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>French Harbour</strong></td>
+                            <td>Comfort, expats, golf</td>
+                            <td>🚫 No</td>
+                            <td>🚫 Not swimmable</td>
+                            <td>🚫 Low</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>East End</strong></td>
+                            <td>Remote, adventure</td>
+                            <td>🚫 No</td>
+                            <td>✅ Wild beaches</td>
+                            <td>🚫 Very low</td>
+                            <td>✅ 4x4</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>🌴 WEST BAY – Best for Beach Lovers & Families</h3>
+                <div class="success-box">
+                    <p><strong>Highlights:</strong> Swimmable white-sand beach, calm water, walkable resorts, best snorkeling from shore. No Sargassum seaweed.</p>
+                    <p><strong>Ideal for:</strong> Families, couples, first-time visitors, all-inclusive lovers</p>
+                    <p><strong>What it's known for:</strong></p>
+                    <ul>
+                        <li>The famous West Bay Beach (widely considered the best on the island and top 10 in Central America)</li>
+                        <li>Easy access to many restaurants, bars, snorkeling reefs</li>
+                        <li>Beautiful sunsets</li>
+                        <li>Calm, clear water most of the year</li>
+                        <li>Resorts + private villas + condos with pools</li>
+                        <li>Great for people who want "easy vacation mode"</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>🔎 Travel Tip:</strong> If you're staying in West Bay, you do not need a rental car. Most things are walkable or reachable by water taxi.</p>
+                </div>
+
+                <h4>WEST BAY – Understanding the Two Sides</h4>
+                <p>Many resorts advertise themselves as being "on West Bay Beach," but not all of them are located on the stretch of soft white sand that most travelers picture when they book a stay in West Bay.</p>
+
+                <h4>🧭 East Side of West Bay (between West End and Los Rocas)</h4>
+                <p><em>Resorts: Aqua di Mare, Luna Beach, Watercolors, Xbalanque, Ibagari, Turtle Beach, etc.</em></p>
+                <p><strong>What to expect:</strong></p>
+                <ul>
+                    <li>Sand is darker and not the classic white "postcard" beach</li>
+                    <li>More seaweed and natural debris in the water</li>
+                    <li>Walking to the main (white-sand) section requires climbing narrow stairs and crossing a steel footbridge</li>
+                    <li>Fewer beachfront dining and bar options</li>
+                    <li>More bugs</li>
+                    <li>Less foot traffic, fewer vendors, fewer cruise ship visitors → (This can be a pro if you want peace and quiet)</li>
+                </ul>
+
+                <h4>🧭 West Side of West Bay (Los Rocas → Grand Roatán)</h4>
+                <p><em>Resorts: Infinity Bay, Paradise Beach, Ocean One, Grand Roatan, Coral Sands, Bananarama, Henry Morgan, Mayan Princess, Arca, etc.</em></p>
+                <p><strong>What to expect:</strong></p>
+                <ul>
+                    <li>Soft white sand</li>
+                    <li>Best walk-in snorkeling on the island</li>
+                    <li>Beachfront restaurants, bars, cafés, and dive shops</li>
+                    <li>More shops on street side as well</li>
+                    <li>Easier to arrange transportation</li>
+                    <li>More activity, more people, more vendors</li>
+                    <li>Cruise ship days can get crowded during late morning/early afternoon</li>
+                </ul>
+
+                <h3>🎶 WEST END – Best for Food, Bars & Dive Culture</h3>
+                <p><strong>Best for:</strong> Budget travelers, divers, backpackers, nightlife, solo travelers</p>
+                <p><strong>Vibe:</strong> Funky, colorful, lively, walkable beach town</p>
+                <p><strong>Famous for:</strong> Dive shops, bars, nightlife, water taxis</p>
+
+                <div class="success-box">
+                    <p><strong>✅ Pros</strong></p>
+                    <ul>
+                        <li>Dozens of bars, restaurants, dive shops in walking distance</li>
+                        <li>Cheaper than West Bay, but same ocean access</li>
+                        <li>Water taxi to West Bay in 3–5 min</li>
+                        <li>Fun social scene, great for meeting people</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <p><strong>❗ Cons</strong></p>
+                    <ul>
+                        <li>No big sandy beach — mostly oceanfront paths & docks</li>
+                        <li>Not ideal for small kids or stroller families</li>
+                        <li>Music and nightlife can be loud in some areas</li>
+                    </ul>
+                </div>
+
+                <p><strong>🔑 Who picks West End:</strong> "We want nightlife, bars, young energy, diving, and no resort feel."</p>
+
+                <h3>🐬 SANDY BAY – Quiet, Nature, and Long-Term Stays</h3>
+                <p><strong>Best for:</strong> Longer stays, quiet travelers, divers, digital nomads, families</p>
+                <p><strong>Vibe:</strong> Residential + nature + eco-retreats</p>
+                <p><strong>Famous for:</strong> Roatán Institute for Marine Sciences, dolphins, botanical gardens, quiet stays</p>
+
+                <h3>🛥️ FRENCH HARBOUR – Shopping, Locals, and Convenience</h3>
+                <p><strong>Best for:</strong> Golfers, luxury villa stays, expats, long-term residents</p>
+                <p><strong>Vibe:</strong> Suburban + marina + residential</p>
+                <p><strong>Famous for:</strong> Golf course, upscale homes, shopping, restaurants</p>
+
+                <h3>🌾 EAST END – Secluded & Off the Beaten Path</h3>
+                <p><strong>Best for:</strong> Adventure travelers, kite surfers, locals, expats, off-grid stays</p>
+                <p><strong>Vibe:</strong> Authentic island life, rustic, remote</p>
+                <p><strong>Famous for:</strong> Wild beaches, Garifuna culture, no crowds</p>
+
+                <h3>🚢 CRUISE PORT AREAS</h3>
+                <div class="warning-box">
+                    <p>✅ Not recommended to visit if you are already staying in Roatan<br>
+                    ✅ Surrounding areas have shopping, souvenir markets & day excursions<br>
+                    ✅ Not walkable to traditional hotel areas<br>
+                    ✅ All beaches require transport, except private cruise-access beaches</p>
+                </div>
+
+                <h3>⭐ What people don't tell you (but should)</h3>
+                <ul>
+                    <li>✅ Some rentals do not have generators — ask before booking (Our rental properties have full-time generators)</li>
+                    <li>✅ Internet varies widely by neighborhood (West End + West Bay = best coverage)</li>
+                    <li>✅ Many beachfront homes filter water but tap is not 100% potable</li>
+                    <li>✅ Distance on the map ≠ travel time — island roads are slow and narrow</li>
+                    <li>✅ If you want to snorkel from shore, West Bay, West End, and Sandy Bay are best</li>
+                </ul>
+            `,
+            
+            'before-travel': `
+                <h2>✈️ Before You Travel</h2>
+
+                <h3>Passport & Entry Requirements</h3>
+                <ul>
+                    <li>Your passport must be valid for at least 6 months beyond your travel date</li>
+                    <li>U.S., Canadian, and most European travelers do not need a pre-arranged visa for visits under 90 days</li>
+                    <li>If planning to stay longer, a visa extension is possible from Roatán using a simple "Letter of Responsibility"</li>
+                </ul>
+
+                <h3>Customs Declaration (DJRV) – Mandatory Form</h3>
+                <div class="highlight-box">
+                    <p>Honduras now requires an electronic customs declaration (DJRV) to be completed online (one per family), and you should have the QR code ready for scanning on departure.</p>
+                    <p><strong>✅ Fill online:</strong> <a href="https://sisglobal.aduanas.gob.hn/Pech/#/plataforma/otra_gestiones/formularioDJRV" target="_blank">https://sisglobal.aduanas.gob.hn/Pech/#/plataforma/otra_gestiones/formularioDJRV</a></p>
+                    <p><strong>✅</strong> Save the QR code it generates for your arrival and departure<br>
+                    <strong>✅</strong> Airport WiFi is unreliable — best to complete in advance</p>
+                </div>
+
+                <h3>Health Rules</h3>
+                <p>As of 2025, Honduras does not require proof of COVID or any other vaccination to enter. That said, both U.S. and Honduran travel policies have shifted several times over the past few years, and officials have recently mentioned the possibility of reinstating vaccine rules for U.S. visitors. Always verify current requirements with your airline or an official government source before traveling.</p>
+
+                <h3>🌞 The Weather & The Best Time to Visit</h3>
+                <p>Roatán has warm tropical weather year-round, but the experience of the island changes depending on the season — not just temperature, but crowds, water clarity, price fluctuations, and even how often the power goes out.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Season</th>
+                            <th>Months</th>
+                            <th>Weather</th>
+                            <th>Crowds & Pricing</th>
+                            <th>Notes / Travel Tips</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dry / High Season</td>
+                            <td>Mid-December – April</td>
+                            <td>Sunniest, lowest rainfall</td>
+                            <td>Busiest time of year, highest prices</td>
+                            <td>Best for diving, weddings, holidays; book early</td>
+                        </tr>
+                        <tr>
+                            <td>Peak Holiday Weeks</td>
+                            <td>Christmas, New Year, Spring Break, Semana Santa (Easter)</td>
+                            <td>Same as above</td>
+                            <td>Fully booked, surcharge pricing, minimum stays common</td>
+                            <td>Flights + rentals sell out months ahead</td>
+                        </tr>
+                        <tr>
+                            <td>Normal Season</td>
+                            <td>May – Mid-October</td>
+                            <td>Mix of sun + short tropical showers</td>
+                            <td>Fewer crowds, better rates</td>
+                            <td>Great balance of weather + value</td>
+                        </tr>
+                        <tr>
+                            <td>Green Season</td>
+                            <td>Mid-October – Mid-December</td>
+                            <td>Sun + clouds + occasional rain</td>
+                            <td>Lowest prices, quietest weeks</td>
+                            <td>Favorite for long-term stays & digital nomads, Easy to find accommodations on the spot</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>Average temps:</strong> 78–88°F (25–31°C)<br>
+                    <strong>Water temp:</strong> 79–84°F (26–29°C) year-round<br>
+                    <strong>No true "cold season,"</strong> even in January — just cooler nights</p>
+                </div>
+
+                <h3>🌧️ The Truth About Rainy Season</h3>
+                <ul>
+                    <li>It does not rain all day, every day</li>
+                    <li>Typical pattern: short heavy downpour → sun returns</li>
+                    <li>West Bay & West End often stay drier due to wind direction</li>
+                    <li>Worst rain months: late Oct–early Dec (but still swimmable)</li>
+                    <li>Upsides: lowest prices, greenest island, clearest water for diving</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>💡 Pro tip:</strong> Bring a light rain jacket + waterproof phone pouch if visiting Oct–Dec.</p>
+                    <p>Don't rely on weather apps for Roatán—they often predict high chances of rain leading to a lot of angst, but this rarely means the entire day will be a washout. In our experience, rain is usually brief or may not occur at all, even when forecasted. For the most accurate and up-to-date local weather, check the "Roatan Weather" Facebook community group, which posts daily updates and short-term forecasts.</p>
+                </div>
+
+                <h3>🪸 Sargassum, Jellyfish & Beach Conditions</h3>
+                <ul>
+                    <li>✅ Roatán is not heavily affected by sargassum like Mexico & DR</li>
+                    <li>✅ Jellyfish blooms sometimes appear in September & October, but still not very prevalent</li>
+                    <li>✅ Sand fleas (noseeums) = worst at sunrise/sunset, especially after rain</li>
+                    <li>✅ Water visibility highest: Feb–May & Aug–Oct</li>
+                </ul>
+
+                <h3>💸 Price & Crowd Levels by Season</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Crowd Level</th>
+                            <th>Price Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Jan–Mar</td><td>High</td><td>$$</td></tr>
+                        <tr><td>April (post-Easter)</td><td>Medium</td><td>$</td></tr>
+                        <tr><td>May–Aug</td><td>Medium–Low</td><td>$</td></tr>
+                        <tr><td>Sept–Oct</td><td>Lowest</td><td>$</td></tr>
+                        <tr><td>Nov–Early Dec</td><td>Medium</td><td>$</td></tr>
+                        <tr><td>Christmas–NYE</td><td>Very High</td><td>$$</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="success-box">
+                    <p><strong>📌 If you want the best mix of weather + value:</strong> Late April, May, or late August.</p>
+                </div>
+
+                <h3>Booking Travel Advice</h3>
+                <ul>
+                    <li>Book airport pickup or Car Rental before arrival — taxis are unmetered</li>
+                    <li>Use early morning or weekday flights for best pricing</li>
+                    <li>Major carriers include AA, Delta, United, Air Canada, WestJet, CM Airlines (domestic), and Tropic Air (Belize)</li>
+                    <li>If you're bringing pets, check ahead: airlines may limit animal transport during hot months</li>
+                </ul>
+
+                <h3>Bonus Tips</h3>
+                <ul>
+                    <li>Before you arrive, we suggest downloading an offline map of Roatan within your Google Maps and/or Apple Maps app. This will ensure you will have GPS even if you don't have cell service or if you want to avoid expensive international roaming</li>
+                    <li>Download the offline Spanish–English translation in Google or Apple Translate. English is common in West Bay and West End, but not universal — especially with taxi drivers and local workers</li>
+                </ul>
+
+                <h3>The Community Is the Best Part of the Island</h3>
+                <ul>
+                    <li>People help each other here — especially expats, locals, and repeat visitors</li>
+                    <li>You'll find charity groups, pet rescues, beach cleanups, school support programs</li>
+                    <li>Islanders are friendly — but respect goes both ways</li>
+                    <li>Roatán works best for people who say "hello" before "how much?"</li>
+                </ul>
