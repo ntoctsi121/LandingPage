@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roatán Visitor Guide - Island in the Sun Rentals</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Fun Font for Headings --- */
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Page Navigation Logic --- */
+
+        /* 1. Hide all main content sections by default */
+        .page-section {
+            display: none;
+        }
+
+        /* 2. Show the specific section that is being targeted (e.g., #welcome) */
+        .page-section:target {
+            display: block;
+        }
+
+        /* 3. By default (when no section is targeted), show the #home tile grid */
+        #home {
+            display: block;
+        }
+
+        /* 4. When ANY other section is targeted, hide the #home tile grid */
+        /* This uses the "general sibling combinator" (~) */
+        :target ~ #home {
+            display: none;
+        }
+
+        /* --- Table Styling --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e5e7eb; /* gray-200 */
+            padding: 0.75rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f3f4f6; /* gray-100 */
+            font-weight: 600;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f9fafb; /* gray-50 */
+        }
+        tbody tr:hover {
+            background-color: #f0f9ff; /* sky-50 */
+        }
+
+        /* --- Content Styling --- */
+        .content-wrapper h3 {
+            font-size: 1.5rem; /* 2xl */
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: #1e3a8a; /* blue-800 */
+        }
+        .content-wrapper h4 {
+            font-size: 1.25rem; /* xl */
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1d4ed8; /* blue-700 */
+        }
+        .content-wrapper p, .content-wrapper ul, .content-wrapper ol {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .content-wrapper ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+        .content-wrapper ol {
+            list-style: decimal;
+            padding-left: 1.5rem;
+        }
+        .content-wrapper li {
+            margin-bottom: 0.25rem;
+        }
+        .content-wrapper a {
+            color: #2563eb; /* blue-600 */
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .content-wrapper a:hover {
+            text-decoration: underline;
+        }
+        .content-wrapper strong {
+            font-weight: 600;
+            color: #1f2937; /* gray-800 */
+        }
+    </style>
+</head>
+
+<body class="bg-cyan-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <!-- Main Header -->
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-5xl font-bold text-blue-900 mb-3">
+                Roatán Visitor Guide
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600">
+                Your Complete Guide brought to you by <a href="http://islandinthesunrentals.com" target="_blank" rel="noopener noreferrer" class="hover:underline text-blue-700 font-semibold">Island in the Sun Rentals</a>
+            </p>
+        </header>
+
+        <main>
+            <!-- 
+              ==================================================================
+              PAGE SECTIONS
+              All content sections are here. The :target CSS logic shows/hides them.
+              ==================================================================
+            -->
+
+            <!-- Section: Welcome -->
+            <section id="welcome" class="bg-white p-6 md:p-10 rounded-lg shadow-lg mb-8 md:mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🌴</span>
+                    Welcome to our Roatán Guide
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Welcome to the Island in the Sun Roatán Travel Guide — created to help you plan confidently, avoid common mistakes, and experience the best of this incredible island.</p>
+                    <p>Roatán is the largest and most visited of the Bay Islands of Honduras, known for its world-class coral reef, warm Caribbean waters, friendly local culture, and relaxed island atmosphere. Whether you're coming for diving, beaches, adventure, food, or simply sunshine and quiet, Roatán offers something for every type of traveler — families, couples, digital nomads, retirees, cruise visitors, and long-term explorers.</p>
+                    <p>Whether you're spending a week at a beachfront resort, hopping between snorkel sites by boat, or considering a part-time move to the island, this guide is designed to make your stay smoother, safer, and more enjoyable. Inside, you'll find practical advice, honest tips from locals and frequent visitors, and our personal recommendations based on years of experience so let’s dive in.</p>
+                    
+                    <h3>Who We Are</h3>
+                    <p>Island in the Sun Rentals is a small, family-run company — just the two of us, based in North Carolina — with deep roots in Roatán.</p>
+                    <p>We own two vacation properties in West Bay and spend about a month on the island every year. We were married here, hosted 80 guests for the wedding, returned for our 10-year anniversary with 50 more, and have volunteered, explored, and built friendships across the island. After reading hundreds of repeat Facebook questions every week on various Roatan travel groups, we realized there was a need for a clear, updated, no-nonsense Roatán guide — so we created one.</p>
+                    <p>Roatán is still considered “off the beaten path”, which can be intimidating to plan, but in our opinion, no other Caribbean destination offers the same mix of reef access, natural beauty, culture, and value. It will all be worth it!</p>
+                    
+                    <h3>Our West Bay Rentals (<a href="http://IslandInTheSunRentals.com" target="_blank" rel="noopener noreferrer">IslandInTheSunRentals.com</a>)</h3>
+                    
+                    <h4>🏡 Dolphin Villa @ Ocean One</h4>
+                    <ul>
+                        <li>✔ 3 bedrooms / 5 bathrooms — ideal for families or groups</li>
+                        <li>✔ New construction (2024) with private small-complex pool + rooftop jacuzzi</li>
+                        <li>✔ Full access to Paradise Beach Hotel amenities</li>
+                        <li>✔ 3-minute walk to West Bay Beach</li>
+                        <li>🔗 <a href="http://DolphinVillaRoatan.com" target="_blank" rel="noopener noreferrer">DolphinVillaRoatan.com</a></li>
+                    </ul>
+
+                    <h4>🌊 Infinity Bay Condo #1003 – Oceanfront</h4>
+                    <ul>
+                        <li>✔ 1-bedroom, fully renovated December 2025</li>
+                        <li>✔ Sleeps up to 4 (queen sleeper sofa in living room)</li>
+                        <li>✔ Located inside Infinity Bay Spa & Beach Resort</li>
+                        <li>✔ Steps to the beach, pool, dive shop, bars & restaurants</li>
+                        <li>🔗 <a href="http://InfinityBay1003.com" target="_blank" rel="noopener noreferrer">InfinityBay1003.com</a></li>
+                    </ul>
+                    
+                    <p class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded-r-lg">
+                        <strong>Disclaimer:</strong> We do our best to keep this guide accurate and up to date, but things on Roatán can change quickly — prices, schedules, policies, and availability may vary without notice. Always double-check important details directly with the business, service provider, or official source.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section: Why Roatan -->
+            <section id="why-roatan" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🏝️</span>
+                    Why Travelers Love Roatán
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Why choose Roatán vs. Other Caribbean Islands?</p>
+                    <ul class="space-y-2">
+                        <li>💲 More affordable than Aruba, Cayman, St. Thomas, or Turks & Caicos</li>
+                        <li>🤗 Friendly, English-speaking island culture with Caribbean + Latin roots</li>
+                        <li>🍽️ Lower food + activity costs compared to most Caribbean islands</li>
+                        <li>🏖️ No sargassum seaweed on West Bay Beach (protected by reef + currents)</li>
+                        <li>🌊 World-class snorkeling & diving right from the beach</li>
+                        <li>🐠 Coral reef begins just 5–30 ft from shore — no boat required</li>
+                        <li>🦈 Marine life hotspot: turtles, eagle rays, tropical fish, dolphins, etc.</li>
+                        <li>✅ Less commercialized — still feels like a real island, not a resort strip</li>
+                        <li>✅ Perfect mix of relaxation + adventure (beach, jungle, reef, activities)</li>
+                        <li>✈️ Direct flights from Miami, Atlanta, Dallas, Houston, Toronto, Montreal (seasonal)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section: Where to Stay -->
+            <section id="where-to-stay" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🏨</span>
+                    Where to Stay in Roatán
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Roatán offers a variety of regions, each with a different feel, budget level, and convenience. Where you stay depends on what matters most to you (beach access, nightlife, quiet nature, diving culture, etc.).</p>
+                    <p>Here’s a Summary of the most common areas travelers ask about:</p>
+                    
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3 text-left font-semibold text-gray-700">Area</th>
+                                    <th class="p-3 text-left font-semibold text-gray-700">Best For</th>
+                                    <th class="p-3 text-left font-semibold text-gray-700">Walkable?</th>
+                                    <th class="p-3 text-left font-semibold text-gray-700">Good Beach?</th>
+                                    <th class="p-3 text-left font-semibold text-gray-700">Nightlife</th>
+                                    <th class="p-3 text-left font-semibold text-gray-700">Car Needed?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="even:bg-white odd:bg-gray-50">
+                                    <td class="p-3 font-medium">West Bay</td>
+                                    <td class="p-3">Families, couples, first-timers</td>
+                                    <td class="p-3">✅ Yes</td>
+                                    <td class="p-3">✅ Best beach</td>
+                                    <td class="p-3">🚫 Low</td>
+                                    <td class="p-3">❌</td>
+                                </tr>
+                                <tr class="even:bg-white odd:bg-gray-50">
+                                    <td class="p-3 font-medium">West End</td>
+                                    <td class="p-3">Divers, budget, nightlife</td>
+                                    <td class="p-3">✅ Yes</td>
+                                    <td class="p-3">🟡 Mixed</td>
+                                    <td class="p-3">✅ High</td>
+                                    <td class="p-3">❌</td>
+                                </tr>
+                                <tr class="even:bg-white odd:bg-gray-50">
+                                    <td class="p-3 font-medium">Sandy Bay</td>
+                                    <td class="p-3">Peace, longer stays</td>
+                                    <td class="p-3">🚫 Not really</td>
+                                    <td class="p-3">🟡 Mixed</td>
+                                    <td class="p-3">🚫 Low</td>
+                                    <td class="p-3">✅</td>
+                                </tr>
+                                <tr class="even:bg-white odd:bg-gray-50">
+                                    <td class="p-3 font-medium">French Harbour</td>
+                                    <td class="p-3">Comfort, expats, golf</td>
+                                    <td class="p-3">🚫 No</td>
+                                    <td class="p-3">🚫 Not swimmable</td>
+                                    <td class="p-3">🚫 Low</td>
+                                    <td class="p-3">✅</td>
+                                </tr>
+                                <tr class="even:bg-white odd:bg-gray-50">
+                                    <td class="p-3 font-medium">East End</td>
+                                    <td class="p-3">Remote, adventure</td>
+                                    <td class="p-3">🚫 No</td>
+                                    <td class="p-3">✅ Wild beaches</td>
+                                    <td class="p-3">🚫 Very low</td>
+                                    <td class="p-3">✅ 4x4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>See below a more in-depth view of each area:</p>
+
+                    <h3>🌴 WEST BAY – Best for Beach Lovers & Families</h3>
+                    <ul>
+                        <li>✅ <strong>Highlights:</strong> Swimmable White-sand beach, calm water, walkable resorts, best snorkeling from shore. No Sargassum seaweed.</li>
+                        <li>✅ <strong>Ideal for:</strong> Families, couples, first-time visitors, all-inclusive lovers</li>
+                        <li>✅ <strong>What it’s known for:</strong>
+                            <ul>
+                                <li>The famous West Bay Beach (widely considered the best on the island and top 10 in Central America)</li>
+                                <li>Easy access to many restaurants, bars, snorkeling reefs</li>
+                                <li>Beautiful sunsets</li>
+                                <li>Clam, clear water most of the year</li>
+                                <li>Resorts + private villas + condos with pools</li>
+                                <li>Great for people who want “easy vacation mode”</li>
+                            </ul>
+                        </li>
+                        <li>✅ <strong>Our Rental Properties:</strong> We own two rental properties in the western part of West Bay Beach (known as the true West Bay Beach!).
+                            <ul>
+                                <li><strong>The Dolphin Villa @ Ocean One</strong> – 3 bedroom, 5 bathroom, pool, private roof-top jacuzzi - Perfect for families. <a href="http://DolphinVillaRoatan.com" target="_blank" rel="noopener noreferrer">DolphinVillaRoatan.com</a></li>
+                                <li><strong>Beachfront Condo 1003 @ Infinity bay Spa & Beach Resort</strong>. 1 King bedroom + Queen-sized sleeper. <a href="http://Infinitybay1003.com" target="_blank" rel="noopener noreferrer">Infinitybay1003.com</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 text-blue-800 rounded-r-lg">
+                        🔎 <strong>Travel Tip:</strong> If you're staying in West Bay, <strong>you do not need a rental car</strong>. Most things are walkable or reachable by water taxi.
+                    </p>
+
+                    <h4>WEST BAY – The Difference between the West side part of West Bay Beach and the East side part...</h4>
+                    <p>Many resorts advertise themselves as being “on West Bay Beach,” but not all of them are located on the stretch of soft white sand that most travelers picture when they book a stay in West Bay.</p>
+                    <p>Locals and frequent visitors generally consider <strong>West Bay Beach</strong> to be the white-sand shoreline that begins around <strong>Los Rocas</strong> and continues west to <strong>Grand Roatán Resort</strong>. This is the area with the clear turquoise water, low seaweed levels, beach bars, restaurants, and easy walk-out snorkeling.</p>
+                    <p>However, several properties located <strong>east</strong> of Los Rocas also use the “West Bay Beach” label in marketing — even though the beach experience is noticeably different.</p>
+                    <p>See below the differences between the two West bay Beaches</p>
+
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h4>🧭 East Side of West Bay (between West End and Los Rocas)</h4>
+                            <p>Resorts in this area include: Aqua di Mare, Luna Beach, Watercolors, Xbalanque, Ibagari, Turtle Beach, etc.</p>
+                            <p><strong>What to expect on the East side:</strong></p>
+                            <ul>
+                                <li>Sand is darker and not the classic white “postcard” beach</li>
+                                <li>More seaweed and natural debris in the water</li>
+                                <li>Walking to the main (white-sand) section of West Bay requires climbing narrow stairs and crossing a small steel footbridge over a canal</li>
+                                <li>Fewer beachfront dining and bar options</li>
+                                <li>More bugs</li>
+                                <li>Less foot traffic, fewer vendors, and fewer cruise ship visitors → (This can be considered a <strong>pro</strong> if you want peace and quiet)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>🧭 West Side of West Bay (Los Rocas → Grand Roatán)</h4>
+                            <p>Resorts in this area include: Infinity Bay, Paradise Beach, Ocean One, Grand Roatan, Coral Sands, Bananarama, Henry Morgan, Mayan Princess, Arca, etc.</p>
+                            <p><strong>What to expect on the West side:</strong></p>
+                            <ul>
+                                <li>Soft white sand</li>
+                                <li>Best walk-in snorkeling on the island</li>
+                                <li>Beachfront restaurants, bars, cafés, and dive shops</li>
+                                <li>More shops on street side as well.</li>
+                                <li>Easier to arrange transportation</li>
+                                <li>More activity, more people, more vendors</li>
+                                <li>Cruise ship days can get crowded during the late morning/early afternoon hours</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>🎶 WEST END – Best for Food, Bars & Dive Culture</h3>
+                    <ul>
+                        <li><strong>Best for:</strong> Budget travelers, divers, backpackers, nightlife, solo travelers</li>
+                        <li><strong>Vibe:</strong> Funky, colorful, lively, walkable beach town</li>
+                        <li><strong>Famous for:</strong> Dive shops, bars, nightlife, water taxis</li>
+                    </ul>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <p><strong>✅ Pros</strong></p>
+                            <ul>
+                                <li>Dozens of bars, restaurants, dive shops in walking distance</li>
+                                <li>Cheaper than West Bay, but same ocean access</li>
+                                <li>Water taxi to West Bay in 3–5 min</li>
+                                <li>Fun social scene, great for meeting people</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>❗ Cons</strong></p>
+                            <ul>
+                                <li>No big sandy beach — mostly oceanfront paths & docks</li>
+                                <li>Not ideal for small kids or stroller families</li>
+                                <li>Music and nightlife can be loud in some areas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>🔑 <strong>Who picks West End:</strong> “We want nightlife, bars, young energy, diving, and no resort feel.”</p>
+
+                    <h3>🐬 SANDY BAY – Quiet, Nature, and Long-Term Stays</h3>
+                    <ul>
+                        <li><strong>Best for:</strong> Longer stays, quiet travelers, divers, digital nomads, families</li>
+                        <li><strong>Vibe:</strong> Residential + nature + eco-retreats.</li>
+                        <li><strong>Famous for:</strong> Roatán Institute for Marine Sciences, dolphins, botanical gardens, quiet stays</li>
+                    </ul>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <p><strong>✅ Pros</strong></p>
+                            <ul>
+                                <li>Quiet, natural, less touristy</li>
+                                <li>Closest area to West End without being “in the scene”</li>
+                                <li>Great long-term rental options</li>
+                                <li>Good for people working remotely</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>❗ Cons</strong></p>
+                            <ul>
+                                <li>Not walkable like West End/West Bay</li>
+                                <li>Patchier beaches (sand + seagrass mixed)</li>
+                                <li>Rental car or driver recommended</li>
+                                <li>No major grocery store/convenience store in area.</li>
+                                <li>Buggy</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>🛥️ FRENCH HARBOUR – Shopping, Locals, and Convenience</h3>
+                    <ul>
+                        <li><strong>Best for:</strong> Golfers, luxury villa stays, expats, long-term residents</li>
+                        <li><strong>Vibe:</strong> Suburban + marina + residential</li>
+                        <li><strong>Famous for:</strong> Golf course, upscale homes, shopping, restaurants</li>
+                    </ul>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <p><strong>✅ Pros</strong></p>
+                            <ul>
+                                <li>Modern grocery stores, gyms, fast Wi-Fi, banks</li>
+                                <li>Home to the island’s only golf course</li>
+                                <li>Private villas, gated communities, ocean views</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>❗ Cons</strong></p>
+                            <ul>
+                                <li>Not swimmable beach area (rocky coast)</li>
+                                <li>No nightlife — everything closes early</li>
+                                <li>Must drive everywhere</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>🔑 <strong>Who stays here:</strong> “People who want comfort, AC, groceries, quiet, and don’t care about walking to a beach.”</p>
+                    <p>🏡 <strong>Nearby Developments:</strong> Pristine Bay (golf & luxury villas), Pineapple Villas, Parrot Tree Beach Resort</p>
+
+                    <h3>🌾 EAST END – Secluded & Off the Beaten Path</h3>
+                    <ul>
+                        <li><strong>Best for:</strong> Adventure travelers, kite surfers, locals, expats, off-grid stays</li>
+                        <li><strong>Vibe:</strong> Authentic island life, rustic, remote</li>
+                        <li><strong>Famous for:</strong> Wild beaches, Garifuna culture, no crowds</li>
+                    </ul>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <p><strong>✅ Pros</strong></p>
+                            <ul>
+                                <li>Empty beaches & untouched nature</li>
+                                <li>More cultural experience than tourist zones</li>
+                                <li>Cheaper land & rentals</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>❗ Cons</strong></p>
+                            <ul>
+                                <li>Far from everything (45–75 min to airport)</li>
+                                <li>Roads rough in places, 4x4 recommended</li>
+                                <li>Limited grocery access, power/internet stability varies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>🔑 <strong>Who stays here:</strong> “People who hate crowds, love space, and want real island life.”</p>
+
+                    <h3>🚢 CRUISE PORT AREAS (Mahogany Bay & Port of Roatán)</h3>
+                    <ul>
+                        <li>✅ Not recommended to visit if you are already staying at Roatan.</li>
+                        <li>✅ Surrounding areas have shopping, souvenir markets & day excursions</li>
+                        <li>✅ Not walkable to traditional hotel areas</li>
+                        <li>✅ All beaches require transport, except private cruise-access beaches</li>
+                    </ul>
+                    <p>We do not recommend making a special trip to the cruise port areas if you are already staying in Roatan.</p>
+
+                    <h3>⭐ What people don’t tell you (but should)</h3>
+                    <ul>
+                        <li>✅ Some rentals <strong>do not have generators</strong> — ask before booking (Our rental Properties have full-time generators if needed - <a href="http://IslandInTheSunRentals.com" target="_blank" rel="noopener noreferrer">IslandInTheSunRentals.com</a>)</li>
+                        <li>✅ Internet varies widely by neighborhood (West End + West Bay = best coverage)</li>
+                        <li>✅ Many beachfront homes filter water but tap is not 100% potable</li>
+                        <li>✅ Distance on the map ≠ travel time — island roads are slow and narrow</li>
+                        <li>✅ If you want to snorkel from shore, <strong>West Bay, West End, and Sandy Bay</strong> are best</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section: Before You Travel -->
+            <section id="before-you-travel" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">✈️</span>
+                    Before You Travel
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <h3>Passport & Entry Requirements</h3>
+                    <ul>
+                        <li>Your <strong>passport must be valid for at least 6 months</strong> beyond your travel date.</li>
+                        <li>U.S., Canadian, and most European travelers <strong>do not need a pre-arranged visa</strong> for visits under 90 days.</li>
+                        <li>If planning to stay longer, a <strong>visa extension</strong> is possible from Roatán using a simple “Letter of Responsibility”</li>
+                    </ul>
+
+                    <h3>Customs Declaration (DJRV) – Mandatory Form</h3>
+                    <p>Honduras now requires an electronic customs declaration (DJRV) to be completed online (one per family), and you should have the QR code ready for scanning on departure. If you can, complete it before you reach the airport because airport internet can be flaky. One form per household.</p>
+                    <ul>
+                        <li>✅ <strong>Fill online:</strong> <a href="https://sisglobal.aduanas.gob.hn/Pech/#/plataforma/otra_gestiones/formularioDJRV" target="_blank" rel="noopener noreferrer">https://sisglobal.aduanas.gob.hn/.../formularioDJRV</a></li>
+                        <li>✅ Save the <strong>QR code</strong> it generates for your arrival and departure</li>
+                        <li>✅ Airport WiFi is unreliable — best to complete in advance</li>
+                    </ul>
+
+                    <h3>Health Rules</h3>
+                    <p>As of 2025, Honduras does not require proof of COVID or any other vaccination to enter. That said, both U.S. and Honduran travel policies have shifted several times over the past few years, and officials have recently mentioned the possibility of reinstating vaccine rules for U.S. visitors. Always verify current requirements with your airline or an official government source before traveling.</p>
+
+                    <h3>🌞 The Weather & The Best Time to Visit</h3>
+                    <p>Roatán has warm tropical weather year-round, but the <strong>experience</strong> of the island changes depending on the season — not just temperature, but crowds, water clarity, price fluctuations, and even how often the power goes out.</p>
+
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Season</th>
+                                    <th>Months</th>
+                                    <th>Weather</th>
+                                    <th>Crowds & Pricing</th>
+                                    <th>Notes / Travel Tips</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Dry / High Season</strong></td>
+                                    <td>Mid-December – April</td>
+                                    <td>Sunniest, lowest rainfall</td>
+                                    <td>Busiest time of year, highest prices</td>
+                                    <td>Best for diving, weddings, holidays; book early</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Peak Holiday Weeks</strong><br><small>(Sub-season of Dry)</small></td>
+                                    <td>Christmas, New Year, Spring Break, Semana Santa (Easter)</td>
+                                    <td>Same as above</td>
+                                    <td>Fully booked, surcharge pricing, minimum stays common</td>
+                                    <td>Flights + rentals sell out months ahead</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Normal Season</strong></td>
+                                    <td>May – Mid-October</td>
+                                    <td>Mix of sun + short tropical showers</td>
+                                    <td>Fewer crowds, better rates</td>
+                                    <td>Great balance of weather + value</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Green Season</strong></td>
+                                    <td>Mid-October – Mid-December</td>
+                                    <td>Sun + clouds + occasional rain</td>
+                                    <td>Lowest prices, quietest weeks</td>
+                                    <td>Favorite for long-term stays & digital nomads, Easy to find accommodations on the spot.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Rain showers often pass quickly, especially along the western beaches like West Bay.</p>
+                    <ul>
+                        <li>✅ Average temps: <strong>78–88°F (25–31°C)</strong></li>
+                        <li>✅ Water temp: <strong>79–84°F (26–29°C)</strong> year-round</li>
+                        <li>✅ No true “cold season,” even in January — just cooler nights</li>
+                    </ul>
+
+                    <h4>🌧️ The Truth About Rainy Season</h4>
+                    <ul>
+                        <li>It <strong>does not rain all day, every day</strong></li>
+                        <li>Typical pattern: short heavy downpour → sun returns</li>
+                        <li>West Bay & West End often stay drier due to wind direction</li>
+                        <li>Worst rain months: late Oct–early Dec (but still swimmable)</li>
+                        <li>Upsides: lowest prices, greenest island, clearest water for diving</li>
+                    </ul>
+                    <p>💡 <strong>Pro tip:</strong> Bring a <strong>light rain jacket</strong> + waterproof phone pouch if visiting Oct–Dec.</p>
+                    <p>Don’t rely on weather apps for Roatán—they often predict high chances of rain leading to a lot of angst to our guests, but this rarely means the entire day will be a washout. In our experience, rain is usually brief or may not occur at all, even when forecasted. For the most accurate and up-to-date local weather, check the “Roatan Weather” Facebook community group, which posts daily updates and short-term forecasts.</p>
+
+                    <h4>🪸 Sargassum, Jellyfish & Beach Conditions</h4>
+                    <ul>
+                        <li>✅ Roatán is <strong>not heavily affected by sargassum</strong> like Mexico & DR</li>
+                        <li>✅ Jellyfish blooms sometimes appear in <strong>September & October</strong>, but still not very prevalent.</li>
+                        <li>✅ Sand fleas (noseeums) = worst at sunrise/sunset, especially after rain</li>
+                        <li>✅ Water visibility highest: <strong>Feb–May & Aug–Oct</strong></li>
+                    </ul>
+
+                    <h4>💸 Price & Crowd Levels by Season</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6 max-w-md">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Crowd Level</th>
+                                    <th>Price Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jan–Mar</td>
+                                    <td>High</td>
+                                    <td>$$$</td>
+                                </tr>
+                                <tr>
+                                    <td>April (post-Easter)</td>
+                                    <td>Medium</td>
+                                    <td>$$</td>
+                                </tr>
+                                <tr>
+                                    <td>May–Aug</td>
+                                    <td>Medium–Low</td>
+                                    <td>$$</td>
+                                </tr>
+                                <tr>
+                                    <td>Sept–Oct</td>
+                                    <td>Lowest</td>
+                                    <td>$</td>
+                                </tr>
+                                <tr>
+                                    <td>Nov–Early Dec</td>
+                                    <td>Medium</td>
+                                    <td>$$</td>
+                                </tr>
+                                <tr>
+                                    <td>Christmas–NYE</td>
+                                    <td>Very High</td>
+                                    <td>$$$$</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>📌 <strong>If you want the best mix of weather + value:</strong> Late April, May, or late August.</p>
+
+                    <h3>Booking Travel Advice</h3>
+                    <ul>
+                        <li>Book <strong>airport pickup or Car Rental</strong> before arrival — taxis are unmetered. (We have a full section on Transportation later in this guide with travel recommendations)</li>
+                        <li>Use early morning or weekday flights for best pricing.</li>
+                        <li>Major carriers include AA, Delta, United, Air Canada, WestJet, CM Airlines (domestic), and Tropic Air (Belize).</li>
+                        <li>If you're bringing pets, check ahead: airlines may limit animal transport during hot months.</li>
+                    </ul>
+
+                    <h3>Bonus Tips</h3>
+                    <ul>
+                        <li>Before you arrive, we suggest downloading an offline map of Roatan within your Google Maps and/or Apple Maps app. This will ensure you will GPS even if you don’t have cell service or if you want to avoid expensive international roaming.</li>
+                        <li>Download the offline Spanish–English translation in Google or Apple Translate. English is common in West Bay and West End, but not universal — especially with taxi drivers and local workers.</li>
+                    </ul>
+
+                    <h3>The Community Is the Best Part of the Island</h3>
+                    <ul>
+                        <li>People help each other here — especially expats, locals, and repeat visitors</li>
+                        <li>You’ll find charity groups, pet rescues, beach cleanups, school support programs</li>
+                        <li>Islanders are friendly — but respect goes both ways</li>
+                        <li>Roatán works <strong>best for people who say “hello” before “how much?”</strong></li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: What to Pack -->
+            <section id="what-to-pack" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🎒</span>
+                    What to Pack
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Roatán has warm tropical weather year-round, but island infrastructure, sun intensity, and product availability mean there are <strong>specific items you’ll want to bring</strong> — especially if you're used to U.S./Canadian convenience.</p>
+
+                    <h4>✅ Essentials Everyone Should Bring</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Why You Need It</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Reef-safe sunscreen</strong></td>
+                                    <td>Required at many snorkel & marine parks; local price is high</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bug repellent (DEET or Picaridin)</strong></td>
+                                    <td>"Sand fleas & mosquitos, especially at dusk"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Water shoes or reef-safe sandals</strong></td>
+                                    <td>"Sea urchins, rocks, coral near shoreline in some parts of the beach"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Copies/photos of passport & cards</strong></td>
+                                    <td>Backup for lost/stolen items</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>"Small bills ($1, $5, $10 USD)"</strong></td>
+                                    <td>"Taxis, tips, beach vendors, small shops. We typically bring at least $250 per week of small bills"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Snorkel mask (optional but recommended)</strong></td>
+                                    <td>Rental gear varies in quality & fit</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Portable power bank</strong></td>
+                                    <td>Power outages & long beach days</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Quick-dry towels / rash guard</strong></td>
+                                    <td>UV + jellyfish protection</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prescription meds</strong></td>
+                                    <td>Local brands differ & pharmacies can run out</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded-r-lg">
+                        ✅ <strong>Bring what you MUST have</strong> — the island does not have Amazon Prime.
+                    </p>
+
+                    <h4>🧴 Toiletry & Health Items (Harder or Expensive to Find Locally)</h4>
+                    <ul>
+                        <li>Children’s meds (Tylenol, Zyrtec, etc.)</li>
+                        <li>Feminine hygiene products (limited selection)</li>
+                        <li>Aloe gel / sunburn care</li>
+                        <li>Contact solution & lenses</li>
+                        <li>Electrolyte packets (for sun and rum recovery)</li>
+                        <li>Favorite shampoo / conditioner (island brands are basic)</li>
+                        <li>Anti-itch cream (bug bites + coral scrapes)</li>
+                    </ul>
+
+                    <h4>👨‍👩‍👧‍👦 Packing for Kids / Families</h4>
+                    <ul>
+                        <li>✅ Swim shirts / rash guards (strong sun)</li>
+                        <li>✅ Kid snacks (Goldfish, granola bars, applesauce pouches = expensive here)</li>
+                        <li>✅ Baby formula & diapers (available, but costly & inconsistent brands)</li>
+                        <li>✅ Floaties / life vests for non-swimmers</li>
+                        <li>✅ Waterproof phone pouch</li>
+                    </ul>
+
+                    <h4>🤿 Packing for Divers & Snorkelers</h4>
+                    <ul>
+                        <li>✅ Mask & snorkel (fit > rental availability) – Many rentals available on West Bay Beach.</li>
+                        <li>✅ SMB (safety sausage) if boat diving</li>
+                        <li>✅ Dive Certification number/card/login.</li>
+                        <li>✅ Dive computer (rental = limited)</li>
+                        <li>✅ Logbook (for shore dives & specialty courses)</li>
+                        <li>✅ Defog spray (or baby shampoo)</li>
+                        <li>✅ Waterproof reef-safe sunscreen</li>
+                        <li>✅ Mesh gear bag / dry bag</li>
+                    </ul>
+                    <p>📌 Dive weights & tanks always provided, no need to bring.</p>
+
+                    <h4>❌ Things You <strong>Do Not</strong> Need to Pack</h4>
+                    <ul>
+                        <li>🚫 Hair dryer (most rentals include, and humidity makes them pointless) (our rentals include this)</li>
+                        <li>🚫 High heels or formal shoes (very few places to wear them)</li>
+                        <li>🚫 Beach towels (provided in most rentals + resorts)</li>
+                        <li>🚫 Full-size snorkel fins (travel fins or rentals are fine unless serious diver)</li>
+                        <li>🚫 Heavy jackets — even “cold season” is 75–80°F</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Arrival & Airport -->
+            <section id="arrival" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🛬</span>
+                    Arrival & Airport Info
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <h3>Roatán Airport (Airport code = RTB)</h3>
+                    <p>Juan Manuel Gálvez International Airport (RTB) is the main airport on Roatán, located near Coxen Hole on the western side of the island. As of November 2025, the airport is undergoing expansion and modernization, which may result in longer lines, construction detours, limited parking, or occasional delays. It’s a good idea to allow extra time when departing and to arrive with a bit of patience when landing — especially on busy travel days.</p>
+
+                    <h3>Arrival Process</h3>
+                    <ol>
+                        <li><strong>Disembark and proceed to Immigration</strong> — keep your passport and <strong>customs form QR code</strong> ready.</li>
+                        <li><strong>Collect checked luggage</strong> — luggage carts available but limited. Airport security typically checks your ID to your bag tag – don’t be alarmed, this is just an extra layer of security.</li>
+                        <li><strong>Customs scan</strong> — present your QR code; occasional bag checks.</li>
+                        <li>If you have anything new and wrapped (boxed or in plastic wrap), I would strongly suggest unwrapping it. If you have a new item, the customs official will flag it and you will need to pay a hefty import tax. Whenever we bring new items to Honduras, we always unbox it!</li>
+                        <li><strong>Exiting the airport</strong> — your transportation or shuttle should be waiting just outside arrivals.</li>
+                    </ol>
+
+                    <h4>Traveling with Small children?</h4>
+                    <p>If your child is small enough to be carried, pick them up as you enter the customs line. Head to the left-most line, where staff will typically direct families with young children to the front, making the process quicker and easier for you.</p>
+                    <p class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 text-red-800 rounded-r-lg">
+                        🛑 <strong>Important:</strong> Do not accept rides from drivers inside the terminal unless pre-arranged. Most legitimate drivers wait outside with signs.
+                    </p>
+
+                    <h3>Airport Tips</h3>
+                    <ul>
+                        <li><strong>ATMs are available near baggage claim</strong>, but occasionally offline or out of cash — better to arrive with small USD bills for tips and transfers.</li>
+                        <li><strong>No roaming SIM cards for sale inside the airport</strong> — arrange eSIM or local SIM ahead of time if needed. Although, probably best to just purchase an international pass with your cell phone carrier before traveling.</li>
+                        <li><strong>Bathrooms are just before customs</strong> and outside the arrivals area — take advantage before heading out.</li>
+                        <li>Taxi prices are <strong>not metered</strong>, so always confirm your fare before sitting down.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Transportation -->
+            <section id="transportation" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🚕</span>
+                    Transportation & Getting Around
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <h3>How do I get to Roatán?</h3>
+                    <ul>
+                        <li>Direct flights from hubs like Miami, Houston, Dallas, Atlanta, Toronto (seasonal).</li>
+                        <li>Domestic flights from La Ceiba or San Pedro Sula.</li>
+                        <li>Ferry from La Ceiba (~1 hr 15 min). Can be bumpy and unreliable in poor weather — avoid if prone to motion sickness</li>
+                    </ul>
+                    <p>If you plan on staying on West Bay Beach to relax, swim, snorkel, and dive, you definitely don’t need a car. But, if you’re the type that likes to explore, there is plenty to see around the rest of the island. There are taxis and private drivers that can take you all around the island, but if you have a lot of people in your group this can get expensive. You can rent a car from one of the companies at the airport, which you can find by searching online, or if you join one of the many Roatan travel Facebook sites, there are many private rentals as well. If you just want a car to explore for just a day or two, there is also a car rental company in West Bay Mall, the shopping complex located on the road just out to the left of the Ocean One entrance, and another car rental place just inside the entrance of the Infinity Bay complex, just down the road to the right. With these places, you can rent a car for a short period of time. Ocean One offers transportation to and from the complex, and for a similar price, you can also hire a private driver to pick you up from the airport and bring you to our place.</p>
+
+                    <h3>Airport Transfers</h3>
+                    <p>Arrange through your hotel, rental host, or trusted local driver. If you book either of our rentals at Ocean One or Infinity Bay, the resort can provide transportation at an added cost. Just let us know and we can help arrange.</p>
+                    <p>Recommended drivers/car rentals can be found in all major FB groups. Although we have personally used a few:</p>
+                    <ul>
+                        <li>If you are looking for a private diver, we recommend <strong>Jesi Alvarez with Roatan Driver</strong> (she’s on Facebook- or contact her on whatsapp at +504 9542-6832). She is reliable and communicative and speaks great English. She will also add in a stop to the grocery store on the way to our villa, so you can stock up on supplies.</li>
+                        <li>We have rented “island cars” in the past from a local named <strong>Leonardo +504-3246-1274</strong>. He also can be a private driver and he is very reliable, and a great communicator. He recently handled all transportation (airport transfers + excursions) for our group of 50 guests without any issues. If you rent from him, he will meet you at the airport with a car ready to go. His cars are much cheaper than the mainstream car rental companies, but he typically only accepts cash.</li>
+                        <li>If you are looking for newer cars/suvs and the ability to pay for car rental by credit card, we recommend <strong>Werner Leon Sun</strong>. His English is also very good. +504-9435-9696 whatsapp/cell.</li>
+                    </ul>
+                    <p><strong>Typical fares from airport if not prearranged:</strong></p>
+                    <ul>
+                        <li>West End: $20–25 USD</li>
+                        <li>West Bay: $25–30 USD</li>
+                        <li>Sandy Bay: $15–20 USD</li>
+                    </ul>
+
+                    <h3>Taxis</h3>
+                    <ul>
+                        <li>Roatán taxis are <strong>non-metered and priced per ride</strong>, not per person</li>
+                        <li><strong>Confirm the fare before you get in</strong></li>
+                        <li>Some drivers speak English; others do not — basic Spanish helps</li>
+                    </ul>
+                    <p class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded-r-lg">
+                        ✅ No Uber or Lyft on Roatán — use taxis, pre-arranged drivers, car rentals, or hotel transfer.
+                    </p>
+                    <p>📲 <strong>Tip:</strong> Use WhatsApp to communicate with reliable repeat drivers</p>
+
+                    <h3>Car Rentals</h3>
+                    <ul>
+                        <li>Available at the airport, Coxen Hole, and West Bay</li>
+                        <li>Necessary only if staying outside main zones (e.g., Pristine Bay, Palmetto Bay, or East End)</li>
+                        <li>Roads can be narrow and unlit at night</li>
+                        <li>4x4 suggested for rainy season or remote stays</li>
+                    </ul>
+
+                    <h3>Water Taxis</h3>
+                    <ul>
+                        <li>Popular between West End and West Bay</li>
+                        <li>~$3–$5 USD one way</li>
+                        <li>Run during daylight hours only, but if you talk to one of the operators prior to nightfall you can arrange for a night water taxi ride. For Night water taxis - I have used <strong>McBride Tours</strong> to transport our family to/from West End from Infinity bay resort dock +504-3233-9561</li>
+                    </ul>
+
+                    <h3>Buses & Colectivos (not recommended for tourists unless you are fluent in Spanish, adventurous, and looking to save $$$)</h3>
+                    <ul>
+                        <li>Used by locals and long-term visitors.</li>
+                        <li>Inexpensive ($1–2 USD), but less convenient for tourists</li>
+                        <li>Routes run from West End → Coxen Hole → French Harbour → Punta Gorda</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Money & Tipping -->
+            <section id="money" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">💸</span>
+                    Money, ATMs & Tipping
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <h3>Currency</h3>
+                    <p>Roatán uses the <strong>Honduran Lempira (HNL)</strong>, but <strong>USD is widely accepted</strong>, especially in tourist areas. Canadian dollars and many other currencies are rarely accepted. Canadians are advised to bring USD and/or withdraw local Lempira at ATMs upon arrival.</p>
+                    <p>The current translation is 26 Lempira to $1 USD. In other words, about 100 Ls = $4 USD.</p>
+
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6 max-w-md">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Use</th>
+                                    <th>Preferred Currency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hotels, resorts, tours</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>Restaurants, groceries, taxis</td>
+                                    <td>Lempira or USD</td>
+                                </tr>
+                                <tr>
+                                    <td>Small shops, tips, gas</td>
+                                    <td>Lempira</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>🔎 <strong>Local tip:</strong> Use Lempira for purchases under $20 to avoid poor exchange rates.</p>
+                    <ul>
+                        <li>Credit cards widely accepted in resorts + tourist restaurants</li>
+                        <li>Small independent shops = <strong>cash preferred</strong></li>
+                    </ul>
+                    <p class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 text-red-800 rounded-r-lg">
+                        ⚠️ <strong>DO NOT</strong> exchange money at the airport currency desk — worst rate on the island
+                    </p>
+
+                    <h3>ATMs</h3>
+                    <p>Locations (Information subject to change):</p>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Location</th>
+                                    <th>Bank</th>
+                                    <th>Max Withdrawal</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>West Bay Mall</td>
+                                    <td>BAC</td>
+                                    <td>10,000 HNL</td>
+                                    <td>Most reliable in West Bay</td>
+                                </tr>
+                                <tr>
+                                    <td>West End (Half Moon Bay)</td>
+                                    <td>Banco Atlántida</td>
+                                    <td>5,000 HNL</td>
+                                    <td>Works with most U.S. cards</td>
+                                </tr>
+                                <tr>
+                                    <td>Airport (RTB)</td>
+                                    <td>BAC</td>
+                                    <td>5,000 HNL</td>
+                                    <td>Fees + often out of cash Sat/Sun</td>
+                                </tr>
+                                <tr>
+                                    <td>Coxen Hole Banks</td>
+                                    <td>Multiple</td>
+                                    <td>10–20k HNL</td>
+                                    <td>Best for larger withdrawals</td>
+                                </tr>
+                                <tr>
+                                    <td>French Harbour Megaplaza</td>
+                                    <td>BAC / Davivienda</td>
+                                    <td>10–20k HNL</td>
+                                    <td>Good for long stays / groceries</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p><strong>🛑 ATM warnings:</strong></p>
+                    <ul>
+                        <li>Limits vary (4,000–10,000 Lempira per withdrawal)</li>
+                        <li>Machines may run out of cash during holidays, so it is best to plan ahead if you are low on cash.</li>
+                        <li>Power outages can affect functionality</li>
+                        <li>Some international banks may reject foreign cards unless travel alert is set</li>
+                        <li>Fees may be higher than usual.</li>
+                    </ul>
+                    <p>💡 <strong>Best practice:</strong> Bring some clean USD bills ($1s, $5s, $10s) and use reputable local ATMs when possible (BAC Credomatic, Davivienda are biggest banks in Honduras). Oftentimes they do not accept any bills that have rips or tears (Even small rips)</p>
+
+                    <h3>💳 Credit Cards</h3>
+                    <ul>
+                        <li>✅ Widely accepted at resorts, restaurants, grocery stores</li>
+                        <li>❗ 1–5% surcharge is common (business covers processing fees)</li>
+                        <li>❗ Visa + Mastercard work best — AmEx accepted only in some places</li>
+                    </ul>
+                    <p class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 text-red-800 rounded-r-lg">
+                        ⚠️ Local card processors can decline U.S./Canadian cards randomly — always have backup payment method.
+                    </p>
+                    <p>They don’t have Venmo in Honduras, although some businesses accept Paypal.</p>
+
+                    <h3>Tipping Guide</h3>
+                    <ul>
+                        <li><strong>Restaurant servers: 10–20%</strong> (check if already included). Also, it is oftentimes required to request to put a tip on the credit card PRIOR to when the waiter runs your credit card. Before giving them your Credit card, ask if that is the case if you want to tip using credit. Otherwise, you can just leave a cash tip.</li>
+                        <li><strong>Taxi drivers:</strong> Round up (or 20–50 Lempira)</li>
+                        <li><strong>Dive boat crews: $5–$10 USD</strong> per dive per person</li>
+                        <li><strong>Grocery bag helpers: 20–30 Lempira</strong> or $1 USD (The kids that bag at Eldon’s do so for free, so we like to tip them)</li>
+                        <li><strong>Rental cleaning staff: $5–$10 per day</strong> or <strong>$20+ per clean</strong></li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Food & Groceries -->
+            <section id="food" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🍽️</span>
+                    Food, Drinks & Groceries
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Roatán has an impressive mix of local Honduran cuisine, fresh seafood, expat-friendly restaurants, breweries, coffee shops, and grocery options — but availability varies by area. Prices are affordable compared to US and other Caribbean island standards. The most common fresh fish catch are Mahi, Snapper, Grouper, and Lionfish.</p>
+
+                    <h4>🥘 Local Food to Try</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Dish</th>
+                                    <th>What It Is</th>
+                                    <th>Where to Find It</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Baleadas</strong></td>
+                                    <td>Thick flour tortilla w/ beans, cheese, eggs, etc.</td>
+                                    <td>Street stands, local comedores</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tapado</strong></td>
+                                    <td>Coconut milk seafood soup w/ plantains</td>
+                                    <td>Punta Gorda, Garifuna areas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Whole fried red snapper</strong></td>
+                                    <td>Served w/ rice & tostones</td>
+                                    <td>Beachfront restaurants</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Conch soup</strong></td>
+                                    <td>Creamy island-style conch chowder</td>
+                                    <td>Resorts + local cafes</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pastelitos / Empanadas</strong></td>
+                                    <td>Fried pastry w/ meat or fish</td>
+                                    <td>Bakeries, markets</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coconut bread</strong></td>
+                                    <td>Island-style sweet bread</td>
+                                    <td>Made in Punta Gorda & local bakeries</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>🍴 Restaurant Styles by Area</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Area</th>
+                                    <th>Food Type</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>West Bay</strong></td>
+                                    <td>Mix of laid back beach bars & upscale, beachfront dining, resort restaurants</td>
+                                    <td>Higher prices, most take cards</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>West End</strong></td>
+                                    <td>Bars, tacos, cafes, fresh fish, vegan + gluten-free options</td>
+                                    <td>Walkable food scene</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sandy Bay</strong></td>
+                                    <td>Boutique restaurants, quiet cafes</td>
+                                    <td>Must need a car or a ride even if staying at Sandy Bay</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>French Harbour</strong></td>
+                                    <td>Local seafood, sports bars, American-style steak & grill</td>
+                                    <td>Must need a car or a ride even if staying at French Harbour</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>East End</strong></td>
+                                    <td>Small beach bars, seafood shacks</td>
+                                    <td>Cash preferred, slower service pace. Off the beaten path.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>🍹 Drinks & Nightlife</h4>
+                    <ul>
+                        <li><strong>West End</strong> is the island’s nightlife hub (live music, bar hopping, craft cocktails)</li>
+                        <li><strong>West Bay</strong> has more resort bars + sunset happy hours</li>
+                        <li>Island breweries: <strong>Roatan Island Brewing Co.</strong> in Palmetto Bay</li>
+                        <li>Rum & cigars: <strong>Salva Vida</strong> and <strong>Flor de Caña</strong> are common local choices</li>
+                        <li>Bars typically close early unless it’s a weekend or event night</li>
+                        <li>Roatan also has a great music scene. We recommend seeing Lisandro Cabrera, Scott Chamberlain, & Brion James, but there are many other talented musicians as well on the island.</li>
+                    </ul>
+
+                    <h4>🛒 Grocery Stores</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Store</th>
+                                    <th>Location</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Eldon’s Supermarket</strong> (our top recommendation)</td>
+                                    <td>French Harbour + Coxen Hole</td>
+                                    <td>Biggest selection, bakery & deli, ATMs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>-ROA Market<br>-Captain Van’s</strong></td>
+                                    <td>West Bay</td>
+                                    <td>Imports, frozen foods, organic section</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Jackson’s</strong></td>
+                                    <td>West End</td>
+                                    <td>Small but has imported cheese, snacks, wine</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Farmer’s Markets</strong></td>
+                                    <td>West End, French Harbour (varies by day)</td>
+                                    <td>Fresh fruit & veg, better prices</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>TIP</strong> – If you are hiring a driver, include a trip to Eldon’s on the way to your accommodation, so you can stock up on food and alcohol.</p>
+                    
+                    <p><strong>🛑 Food price reality:</strong></p>
+                    <ul>
+                        <li>Imported cheese, beer, snacks, cereal, protein powder, sunscreen = <strong>expensive</strong></li>
+                        <li>Eldon’s will have most American brands of food, but again, they will be expensive. In most cases there will be a Central American brand substitute for a fraction of the price.</li>
+                        <li>Local produce, coffee, fresh fish, eggs, tortillas = <strong>very affordable</strong></li>
+                    </ul>
+
+                    <h4>🍕 Delivery & Takeout</h4>
+                    <ul>
+                        <li>Some restaurants deliver via <strong>WhatsApp</strong>, not apps like Uber Eats</li>
+                        <li>✅ <strong>Tip:</strong> Ask your host for a <strong>restaurant WhatsApp list</strong> — it’s how the island orders.</li>
+                    </ul>
+
+                    <h4>🥭 What Food to Bring With You</h4>
+                    <ul>
+                        <li>✅ Protein bars, specialty snacks, baby formula</li>
+                        <li>✅ Gluten-free or allergy-friendly products</li>
+                        <li>✅ Favorite coffee or tea although Roatan offers a nice selection of grounds.</li>
+                        <li>✅ Spices & sauces not found locally</li>
+                        <li>✅ Snack packs for kids (island snacks can be $$)</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Restaurant Picks -->
+            <section id="restaurants" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🍴</span>
+                    Restaurant Recommendations
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Roatan offers great restaurant options, many of which in West Bay that are walkable from our properties.</p>
+
+                    <h3>West side of West Bay Beach (Walkable from our vacation rentals)</h3>
+                    
+                    <h4>Bananarama (Thirsty Turtle)</h4>
+                    <p>Having little kids, our favorite place to eat/drink is Bananarama. It is right next door on the beach, super casual, very reasonably priced, and the food is yummy!! They have a white board and post 2 for 1 food and drink specials every day. They also have delicious pizza, so it’s a favorite for our pickiest family members. They are super casual, and we can show up for lunch in swimsuits and the kids can play in the sand until their food is ready. They also have fun entertainment at night, including live music, karaoke and trivia nights. Our favorite drink on the island is also from here. Order a Bananarama, you won’t regret it!! (They also make them virgin… our kids always ask to go back to Roatan to drink the Bananaramas!!)</p>
+
+                    <h4>Beachers</h4>
+                    <p>A close second on West Bay Beach is Beachers. They are a short walk down the beach toward West End. Their coconut shrimp is delicious, and they have a lobster special on Monday nights where you can get a couple of lobster tails with sides for about $20. Get there early on Mondays because they fill up fast!!</p>
+
+                    <h4>Kristi’s Island Restaurant</h4>
+                    <p>Located right across the street from the Ocean One Complex, just outside of West Bay lodge. Owned by a couple of expats, their food is delicious. The restaurant is small though, so unless you are going on an off time, plan to make reservations for dinner!</p>
+
+                    <h4>Kismet</h4>
+                    <p>If you’re looking to get away from the crowds, check out Kismet at the Meridian at Lighthouse Point. This condo development is in a neighborhood up the hill past Infinity Bay resort and has a restaurant on the beach at the westernmost point of the island. They are open for lunch and dinner. You can walk there, but it’s about a 15 min long, hot, walk uphill. Otherwise, drive or take a taxi. The area is very secluded and it’s especially nice on cruise ship days, when West Bay Beach gets more crowded. You can explore the beach and walk along the trail along the iron shore before or after your meal, and there are lots of gorgeous views and photo ops. We actually got married here!!</p>
+
+                    <h4>Arlyn’s Place</h4>
+                    <p>Located just a short walk from our properties, between Bananarama and Paradise Beach. This local spot is perfect if you want authentic Honduran food at true local prices. We eat here several times a week — the fresh, handmade baleadas are the star ($1-$2 each). Expect a simple, no-frills setup, and be ready to use a little Spanish when ordering. Cash.</p>
+
+                    <h4>Totally Taco</h4>
+                    <p>Also just a short walk away, near West Bay Road behind the main beach strip. A great option for gourmet tacos and fresh flavors. Ideal for a casual lunch off the sand. Popular items include the shrimp tacos, Baja-style fish tacos, and rotating specials. Outdoor seating, easy takeout, and friendly staff.</p>
+
+                    <h3>West End (A taxi ride or a catch a water taxi from Infinity bay dock)</h3>
+
+                    <h4>The Drunken Sailor</h4>
+                    <p>For a true hidden gem, check out The Drunken Sailor in West End. Walking by, this looks like one of the many little dive bars in West End, but this is actually an amazing little Italian restaurant owned by an Italian expat and his family. The food is authentic Italian, and super reasonably priced for what it is. The owner is frequently in the back cooking and will come out and explain the menu to you. This place is tiny, so we recommend either getting reservations or going early or at an off time.</p>
+
+                    <h4>Ginger’s</h4>
+                    <p>Located in Half Moon Bay in West End, they serve some of the best fresh fish on the island. They are another perfect location where you can order food and let your kids splash in the calm, shallow water while they are waiting for their meal.</p>
+
+                    <h4>Sundowners</h4>
+                    <p>If you make it to West End, you have to check out Sundowners, as it’s an icon. It’s a 2-story bar, right on the water, that frequently has live music at night. This is where all of the divers and expats go every evening to hang out. We sipped drinks while our kids played in the shallow water with a couple of local friendly dogs. Sunset views from here are insane.</p>
+
+                    <h4>West Bay Inn Restaurant</h4>
+                    <p>A newer addition to the West End food scene, offering a great mix of fresh seafood, grilled meats, and creative cocktails. The owners, Oscar and Alex, are known for their warm hospitality…and Alex is especially popular for his craft cocktails. Be sure to try “The Nick” (yes, named after yours truly).</p>
+
+                    <h4>Lily Pond Garden</h4>
+                    <p>This is another true hidden gem, located in West End. Most people who have visited Roatan have never heard of it. It is owned by an absolutely lovely man named Zack and his partner, who own a bed and breakfast and restaurant. The restaurant is very small and intimate and is reservation only. You can find them on facebook and message them through there or send them a message through WhatsApp. It is located all the way down West End road to the right, past sundowners, in the neighborhood section in the back of West End. The menu is very small but every single thing on it is carefully prepared and delicious. The fish they serve literally melts in your mouth. This is more of an adult restaurant, as the ambiance is much more upscale, but Zack was great with our 2 little kiddos, providing them with cooking utensils to play with during the meal, and introducing them to his dogs, fish, and bats (yes, bats!!)</p>
+
+                    <h4>Sandy Buns</h4>
+                    <p>A popular expat-owned breakfast café known for its huge portions and famous cinnamon rolls. Come hungry — servings are big, and many guests end up taking leftovers home. Great spot for classic American-style breakfasts, fresh pastries, and a relaxed outdoor setting. This place gets busy, so you may need to wait for a seat.</p>
+
+                    <h4>Yahongreh?</h4>
+                    <p>An affordable, traveler-friendly breakfast and bakery offering fresh pastries, smoothies, coffee, and both Honduran and American breakfast options. Try the baleadas if you want something local. One of the best value breakfasts in West End.</p>
+
+                    <h3>Sandy Bay</h3>
+                    <h4>Blue Bahia</h4>
+                    <p>Seaford, casual beachfront. Car or taxi required. They had very friendly service and great to our kids the last time we were there.</p>
+
+                    <h3>Other areas</h3>
+                    <h4>Ibagari</h4>
+                    <p>Located on the east side of West Bay, Ibagari is one of the most upscale and art-focused properties on the island. The restaurant sits above the beach with views over multiple pools and the Caribbean Sea, offering a refined atmosphere perfect for special dinners, anniversaries, or a “treat yourself” night out. High-end cocktails + Wine list.</p>
+                </div>
+            </section>
+            
+            <!-- Section: Activities & Tours -->
+            <section id="activities" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🎯</span>
+                    Excursions & Activities
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>Roatán offers world-class water activities, wildlife encounters, cultural experiences, and adventure tours — but not all excursions are equal, and some are highly seasonal or tide-dependent. Below is a curated breakdown based on the most commonly recommended and most frequently discussed activities across traveler groups.</p>
+
+                    <h3>🤿 Snorkeling</h3>
+                    <p>Roatán sits on the <strong>second-largest barrier reef in the world</strong> — and unlike many Caribbean islands, much of the reef here is swimmable from shore.</p>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Best Areas</th>
+                                    <th>Highlights</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>West Bay Beach</strong></td>
+                                    <td>Shallow reef, calm water, fish & coral, kid-friendly</td>
+                                    <td>Enter near Infinity Bay or Grand Roatán</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Half Moon Bay (West End)</strong></td>
+                                    <td>Swim out ~200 ft to reef wall</td>
+                                    <td>Best on calm days</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sandy Bay</strong></td>
+                                    <td>Quiet reef, coral pinnacles, fewer crowds</td>
+                                    <td>Requires water shoes + entry access</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blue Channel</strong></td>
+                                    <td>Boat-access only, incredible formations</td>
+                                    <td>Often part of snorkel tours</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul>
+                        <li>✅ Bring your own snorkel gear if you have it — quality varies at rental stands</li>
+                        <li>✅ Reef-safe sunscreen is required in many areas (or banned entirely)</li>
+                        <li>✅ To check or plan around weekly cruise arrivals, follow <a href="http://cruisemapper.com/ports/roatan-island-port-29" target="_blank" rel="noopener noreferrer">cruisemapper.com/ports/roatan-island-port-29</a></li>
+                    </ul>
+
+                    <h3>🐠 Scuba Diving</h3>
+                    <p>Roatán is considered one of the <strong>top 5 dive destinations in the world</strong> for beginners and experts alike.</p>
+                    <ul>
+                        <li>100+ dive sites, most under 10 min by boat</li>
+                        <li>Shore diving available in West End & Sandy Bay</li>
+                        <li>5–7 day certification courses offered island-wide</li>
+                        <li>Popular for <strong>drift dives</strong>, <strong>night dives</strong>, <strong>shark dives</strong>, and <strong>deep walls</strong></li>
+                    </ul>
+                    <p>📍 <strong>Residents & frequent visitors recommend:</strong></p>
+                    <ul>
+                        <li><strong>West End:</strong> Reef Gliders, Coconut Tree Divers, Sundivers</li>
+                        <li><strong>West Bay:</strong> Bananarama Divers, Infinity Divers, West Bay Divers, Naboo, Paradise</li>
+                        <li><strong>Sandy Bay:</strong> Anthony’s Key Resort, Tranquil Seas, Octopus Dive School</li>
+                    </ul>
+
+                    <h3>🎣 Fishing & Private Boat Tours</h3>
+                    <p>Roatán has excellent fishing year-round: mahi, tuna, wahoo, barracuda, snapper (inshore & deep sea). We do not fish, we just curated this info based on Facebook information.</p>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6 max-w-lg">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Duration</th>
+                                    <th>Typical Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Inshore reef fishing</td>
+                                    <td>2–4 hrs</td>
+                                    <td>$150–$250</td>
+                                </tr>
+                                <tr>
+                                    <td>Deep sea / trolling</td>
+                                    <td>4–6 hrs</td>
+                                    <td>$350–$600</td>
+                                </tr>
+                                <tr>
+                                    <td>Full private charter day</td>
+                                    <td>6–8 hrs</td>
+                                    <td>$600–$1,200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul>
+                        <li>✅ Most charters let you <strong>keep your catch</strong></li>
+                        <li>✅ Restaurants will cook it (“You hook it, we cook it”) – Ask ahead of time.</li>
+                        <li>✅ Ask what’s included (bait, rods, license), whether you want inshore vs. deepwater, and cancellations policies for weather.</li>
+                    </ul>
+                    <p><strong>Most-recommended captains on FB groups</strong> (we do not fish, so can’t directly recommend anyone):</p>
+                    <p>Texans Captain Tex, Captain Alex, Ruthless Roatan Charters, Roatan Anglers</p>
+
+                    <h3>🐒 Wildlife & Animal Encounters</h3>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Location</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Sloth & Monkey Sanctuary</strong></td>
+                                    <td>Mayan Jungle (It’s our favorite!), Daniel Johnson’s, AJ’s, or Manawakie Park</td>
+                                    <td>"We love Mayan Jungle, but there are other options. Mayan Jungle also has affordable ziplining. Due to recent Honduran law changes, holding sloths is no longer an option, but you can take photos next to them."</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Dolphin Encounter</strong></td>
+                                    <td>Anthony’s Key Resort</td>
+                                    <td>Swimming optional, book ahead</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Iguana Farm</strong></td>
+                                    <td>French Harbour</td>
+                                    <td>4,000+ iguanas, family favorite</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Carambola Botanical Gardens</strong></td>
+                                    <td>Sandy Bay</td>
+                                    <td>Hiking + wild orchids & birds</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>🪂 Adventure & Day Tours</h3>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Area</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Zipline parks</strong></td>
+                                    <td>West Bay, French Harbour</td>
+                                    <td>12+ lines, some with monkey visits</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Parasailing</strong></td>
+                                    <td>West Bay</td>
+                                    <td>Weather dependent, book same-day</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Glass-bottom boat</strong></td>
+                                    <td>West Bay</td>
+                                    <td>Good for non-swimmers & kids</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ATV / Buggy Tours</strong></td>
+                                    <td>West End / French Harbour</td>
+                                    <td>Dusty in dry season, muddy in rainy</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Catamaran cruises</strong></td>
+                                    <td>West Bay / West End</td>
+                                    <td>Sunset + snorkel options</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rent a boat for the day</strong></td>
+                                    <td>West Bay</td>
+                                    <td>Most customizable, great for groups</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Our Personal Activity Recommendations</h3>
+                    <ul>
+                        <li><strong>Snorkeling</strong> - Some of the best snorkeling in the world is just down the beach from our place! When you get out to the beach, turn left and walk all the way to the end, where the rocks are. Enter the water here and swim straight out to the reef, and then go right. There is a huge reef that surrounds the island, and if you swim out, you get to a big shelf with a drop off. You can snorkel for hours there. Aside from fish and coral, we have seen squid, octopus, turtles, eels, and stingrays!! If you don’t have your own snorkel gear, you can rent from any of the local dive shops, or there are vendors set up along the beach. Usually, you can negotiate for a weekly rate.</li>
+                        <li><strong>Swimming with the Fishies</strong> - In the same area by the rocks at the end of the beach, you can stand in the shallow water and be surrounded by colorful fish! those with little kids, this is always a highlight (and now anywhere we travel, they are always disappointed when they are not surrounded by fish in shallow water)</li>
+                        <li><strong>Dolphin Encounters</strong> - Play with dolphins: Anthony’s Key Resort has dolphin encounters, which we did even when our kids were babies. They are a dolphin research center, and the dolphins regularly get let into the ocean, and freely come back to the resort. There are multiple options, including a dolphin experience for all ages where you stand in waist deep water and get to pet/ feed dolphins, there is a snorkel encounter, and even a dive encounter where the dolphins come out for a dive! This needs to be booked ahead of time online. Anthony’s Key Resort is located in Sandy Bay, which is about 25 min from West Bay.</li>
+                        <li><strong>Private Islands</strong> - Explore a private island: There are multiple little islands that you can go to for a day trip… make sure you go on a non cruise ship day, as they get very crowded when the cruise ships are here, but tend to be empty most other times (you can google and look up cruise ship schedules online). Our current favorite is Brady’s Cay. It’s about a 40 min drive down past French Harbour, and when you get there, you park and take their little pontoon boat shuttle to the island. They have a restaurant, and you can spend the day playing on the beach, eating, and relaxing.</li>
+                        <li><strong>Fire Dancers</strong> - A few times a night, fire dancers put on a free show on the beach in the evening, this happens on Sundays in front of Bananarama and Fridays in front of Infinity Bay. This is certainly something not to miss!</li>
+                        <li><strong>Crab Races</strong> - On Sunday nights, the crab races are held at Bananarama (Thirsty Turtle). This is held in the evening, on the beach right in front of Bananarama. There are drink specials and live music, and people bet on hermit crabs, which then all race, and the winners get free drinks, etc at Bananarama. All proceeds go towards a nonprofit that helps infants of mothers with HIV.</li>
+                        <li><strong>Ziplining</strong> - There are many zipline companies in Roatan, we have only done one so we can only review that one, but if you search online you will see plenty of reviews. We have gone to Mayan Jungle Canopy, and both of our kids, 2 and 5 at the time, were able to double-zip with us. Beware, it can get very hot, so we recommend going as early as possible. Also, be prepared to walk up a whole bunch of steps to get to the zip platforms. Mayan Jungle Canopy also has animal encounters where you can play with monkeys, hold, sloths, and feed birds. Mayan Jungle will also provide roundtrip transportation from our place if you request it!</li>
+                        <li><strong>Mayak Chocolate Factory</strong> - Watch the cholocate-making process and buy various chocolate varieties in different sizes. Located in West End.</li>
+                        <li><strong>Animal Encounters</strong> - There are many animal encounters on the island, and we have only done a few. We especially like Gumbalimba Park, which is located right at the entrance to West Bay, and very close by. They have a great tour and you get to hold macaws, have monkeys jump on your head, and see iguanas. They are also our favorite as they are a true animal sanctuary….their monkeys and macaws are not caged and allowed to run free (you sometimes see the macaws flying around over the West Bay area)</li>
+                    </ul>
+
+                    <h4>Our Activity Recommendations that we haven’t yet tried, but we have noted from frequent Facebook posts</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Area</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Iguana Farm</td>
+                                    <td>French Harbour</td>
+                                    <td>4,000+ iguanas</td>
+                                </tr>
+                                <tr>
+                                    <td>Carambola Botanical Gardens</td>
+                                    <td>Sandy Bay</td>
+                                    <td>Hiking + wild orchids & birds</td>
+                                </tr>
+                                <tr>
+                                    <td>Parasailing</td>
+                                    <td>West Bay</td>
+                                    <td>Weather dependent, book same-day</td>
+                                </tr>
+                                <tr>
+                                    <td>Glass-bottom boat</td>
+                                    <td>West Bay</td>
+                                    <td>Good for non-swimmers & kids</td>
+                                </tr>
+                                <tr>
+                                    <td>ATV / Buggy Tours</td>
+                                    <td>West End / French Harbour</td>
+                                    <td>Dusty in dry season, muddy in rainy</td>
+                                </tr>
+                                <tr>
+                                    <td>Catamaran cruises</td>
+                                    <td>West Bay / West End</td>
+                                    <td>Sunset + snorkel options</td>
+                                </tr>
+                                <tr>
+                                    <td>Rent a boat for the day</td>
+                                    <td>West Bay</td>
+                                    <td>Most customizable, great for groups</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h3>Capture the Moment – Book a Photographer</h3>
+                    <p>After hosting many events in Roatan, we can’t recommend TKM Photography enough! The owner, Katrina, is a Canadian, and she takes amazing family photos at a much more affordable price than any photographers we have ever experienced in the US. She was patient and flexible with our 2 little kids, and even let us change and get some water photos! You can find them on facebook, or their website is <a href="http://tkmphotography.com" target="_blank" rel="noopener noreferrer">tkmphotography.com</a></p>
+
+                    <h3>🛥️ Excursion Booking Tips</h3>
+                    <ul>
+                        <li>✅ Book <strong>fishing, diving, and private boats in advance</strong> if visiting Dec–Apr</li>
+                        <li>✅ Choose <strong>tide-based excursions</strong> (like snorkeling boat trips) in mornings</li>
+                        <li>✅ <strong>Cash is often required</strong> — confirm deposit/payment method.</li>
+                        <li>✅ Ask if price <strong>includes transport</strong> (many West Bay/West End tours do)</li>
+                        <li>✅ Avoid <strong>cruise ship days</strong> if you want quieter beaches & parks</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Safety & Medical -->
+            <section id="safety" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">⚕️</span>
+                    Safety, Crime, Emergency & Medical
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <h3>🛡️ General Safety Overview</h3>
+                    <p>Roatán is <strong>generally safe for tourists</strong>, especially in the main visitor areas (West Bay, West End, Sandy Bay), but like most developing islands, <strong>petty theft can happen</strong> (during all of the times we have visited, we have never encountered. Violent crimes are not common.</p>
+                    <ul>
+                        <li>✅ Safe to walk main areas during the day. It is also safe to walk on main west bay beach in evening/night.</li>
+                        <li>✅ Most resorts & rentals have private security (Our properties on Infinity Bay and Ocean One offer 24/7 security)</li>
+                        <li>✅ Local people are friendly and helpful</li>
+                    </ul>
+                    <p><strong>Just use common sense</strong>, the same you use in any other American/Canadian city such as:</p>
+                    <ul>
+                        <li>Don’t leave valuables unattended — especially on the beach.</li>
+                        <li>At night – stay in well-lit areas.</li>
+                        <li>Don’t flaunt expensive items.</li>
+                        <li>Do not flash large bills or wallets in crowded area.</li>
+                        <li>Avoid being overly intoxicated off-resort and in public.</li>
+                    </ul>
+
+                    <h3>🚓 Emergency Numbers in Roatán</h3>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6 max-w-lg">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Police (National)</td>
+                                    <td>+504 2445-1150</td>
+                                </tr>
+                                <tr>
+                                    <td>Tourist Police (English-speaking)</td>
+                                    <td>+504 9452-9134</td>
+                                </tr>
+                                <tr>
+                                    <td>Ambulance</td>
+                                    <td>195 (or +504 2445-1039)</td>
+                                </tr>
+                                <tr>
+                                    <td>Fire Dept</td>
+                                    <td>+504 2445-1072</td>
+                                </tr>
+                                <tr>
+                                    <td>Medical emergency private clinic</td>
+                                    <td>+504 2407-2200 (Hospital Cemesa)</td>
+                                </tr>
+                                <tr>
+                                    <td>Hyperbaric Chamber (diving injuries)</td>
+                                    <td>+504 2445-1001 (Anthony’s Key)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>📌 Most tourists rely on private clinics & hospitals rather than public facilities. For insurance claims → request printed medical receipts (required by most U.S. carriers)</p>
+
+                    <h3>🏥 Medical & Pharmacy Options</h3>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Facility</th>
+                                    <th>Location</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Hospital Cemesa</strong></td>
+                                    <td>French Harbour</td>
+                                    <td>Best-equipped hospital on island, accepts insurance, ER, labs, imaging</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clinica Esperanza</strong></td>
+                                    <td>Sandy Bay</td>
+                                    <td>Affordable, donations-based, great for minor injuries & traveler health</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Anthony’s Key Hyperbaric Chamber</strong></td>
+                                    <td>Sandy Bay</td>
+                                    <td>For decompression sickness / dive injuries</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pharmacies</strong></td>
+                                    <td>Coxen Hole, French Harbour, West End</td>
+                                    <td>Many do <strong>not</strong> require prescriptions for common meds. It is easy to locate pharmacies. They are within easy walking distance from our rental properties.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul>
+                        <li>✅ Most travelers can get antibiotics, anti-nausea meds, inhalers, etc. at local pharmacies without a U.S. prescription.</li>
+                    </ul>
+                    <p class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 text-red-800 rounded-r-lg">
+                        ❗ <strong>Travel insurance & dive insurance are highly recommended.</strong> Evacuation to mainland or Miami can cost <strong>$15k–$40k USD</strong>.
+                    </p>
+
+                    <h3>🐜 Health Precautions</h3>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Risk</th>
+                                    <th>Prevention</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Mosquito-borne illness</strong><br><small>(dengue, chikungunya)</small></td>
+                                    <td>Rare, but they are possible contraction in mostly all tropical locations. Use repellent with picaridin or DEET, especially at dusk</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sunburn</strong></td>
+                                    <td>UV index is extreme > bring reef-safe sunscreen + rash guards</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Water safety</strong></td>
+                                    <td>Do not drink tap water unless confirmed filtered</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Marine life</strong></td>
+                                    <td>Don’t touch coral, fire coral, sea urchins, or hydroids</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Motion sickness</strong></td>
+                                    <td>Pack meds before arriving — limited brands locally</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>✅ <strong>Sand fleas ("noseeums")</strong> are worse at sunrise/sunset, especially in rainy season. Coconut oil + bug spray works well.</p>
+                </div>
+            </section>
+            
+            <!-- Section: Utilities -->
+            <section id="utilities" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">🔌</span>
+                    Power, Internet, Water & Utilities
+                </h2>
+                <div class="content-wrapper text-gray-700">
+                    <p>(What every traveler wishes they knew before arriving)</p>
+                    <p>Roatán is a developing island — and while resorts and many villas are well-equipped, <strong>utilities are not as automatic or reliable as in North America or Europe</strong>. Knowing this in advance prevents frustration and helps you choose the right rental, resort, or long-term housing.</p>
+
+                    <h3>⚡ Power (Electricity)</h3>
+                    <ul>
+                        <li>✅ <strong>Power outages are normal</strong> — short ones happen weekly, longer ones happen monthly, especially during storms or peak usage.</li>
+                        <li>✅ <strong>Electrical Receptacles in Roatan are the same as United States</strong> — Travelers from Europe and Asia may need adapters.</li>
+                        <li>✅ Most higher-end rentals & resorts include <strong>backup generators</strong>, but many Airbnbs do not. <strong>Both of our properties (Dolphin Villa @ Ocean One) and (Infinity Bay Beachfront condo 1003) are both equipped with a backup generator.</strong></li>
+                        <li>✅ Power is expensive — <strong>3–4× U.S. cost</strong>, billed by KW. This is why:
+                            <ul>
+                                <li>AC may be limited or not included in nightly rental rate (Good News! -- our rentals include the cost of utilities! but please be respectful with the use of AC)</li>
+                                <li>Long-term rentals often charge electricity separately</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>What to Ask Before Booking a Rental</h4>
+                    <div class="overflow-x-auto rounded-lg shadow-md mb-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Why It Matters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>“Do you have a whole-house generator?”</strong></td>
+                                    <td>If yes → outages barely affect you</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>“Does AC run 24/7 or only in bedrooms?”</strong></td>
+                                    <td>Many rentals only cool bedrooms at night (Our rentals have full A/C)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>“Is electricity included in the price?”</strong></td>
+                                    <td>Not standard, especially for monthly stays (Our rentals include electricity)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>“Is there a backup water system?”</strong></td>
+                                    <td>Power outage = water pump outage (no showers/toilets) (Our rentals have generator, so if the power goes out you can still shower!)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 text-red-800 rounded-r-lg">
+                        ⚠️ If you’re staying with kids, elderly, or medically fragile guests → <strong>book a place with generator backup only.</strong>
+                    </p>
+
+                    <h3>🌐 Internet & Wi-Fi</h3>
+                    <ul>
+                        <li>✅ Internet speed has improved dramatically in the past few years.</li>
+                        <li>✅ Fiber is available in West End, West Bay, Sandy Bay, French Harbour</li>
+                        <li>✅ But… outages still happen during storms or power cuts unless the home has a UPS or generator</li>
+                    </ul>
+
+                    <h4>Internet Quality by Area (Generalized)</h4>
+                    <ul>
+                        <li><strong>West Bay</strong> ✅✅✅ (best in resorts & condos) (Both of our rentals have great WIFI)</li>
+                        <li><strong>West End</strong> ✅✅ (good but depends on building)</li>
+                        <li><strong>Sandy Bay</strong> ✅✅ (stable with right provider)</li>
+                        <li><strong>East End</strong> ✅ (weaker, sometimes LTE only)</li>
+                    </ul>
+                    <p>💡 <strong>Digital nomad tip:</strong> Bring a backup hotspot (eSIM or international plan). Tigo and Claro SIM cards cost ~$5–$10 USD and work well in most populated areas.</p>
+
+                    <h3>🚿 Water</h3>
+                    <p>Roatán <strong>does NOT have island-wide municipal water</strong>. Most homes rely on:</p>
+                    <ul>
+                        <li>Stored cistern water pumped into the house</li>
+                        <li>Rainwater collection (East End especially)</li>
+                        <li>Private water delivery trucks when tanks run low</li>
+                    </ul>
+                    <ul>
+                        <li>✅ Most tourist rental homes have <strong>filtered + UV water systems</strong> for drinking</li>
+                        <li>❗ Tap water is <strong>not automatically safe</strong> — always verify with your host</li>
+                    </ul>
+
+                    <h4>💧 Showers & Laundry</h4>
+                    <ul>
+                        <li>Water pressure can vary by home</li>
+                        <li>“Island showers” often mean <strong>warm</strong>, not hot</li>
+                        <li>Laundry takes longer due to humidity → many rentals <strong>do not include dryer use</strong></li>
+                        <li>Long-term renters often dry clothing outdoors or on racks</li>
+                    </ul>
+
+                    <h4>🧊 Groceries & Refrigeration During Outages</h4>
+                    <p>If a rental <strong>does not have a generator</strong>, expect:</p>
+                    <ul>
+                        <li>Refrigerator shuts off during power cut</li>
+                        <li>Frozen foods may thaw during long outages</li>
+                        <li>Wi-Fi drops unless router is on backup battery</li>
+                        <li>AC/fans stop (important in hot season)</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Section: Top FAQs -->
+            <section id="faq" class="page-section bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                <a href="#home" class="inline-block mb-6 text-blue-600 font-medium hover:underline">&larr; Back to Guide Home</a>
+                <h2 class="text-3xl font-bold mb-6 text-blue-800 flex items-center">
+                    <span class="text-4xl mr-3">❓</span>
+                    Top FAQs Summarized
+                </h2>
+                <div class="content-wrapper text-gray-700 space-y-4">
+                    
+                    <h3>General</h3>
+                    <div>
+                        <p><strong>Q: Is Roatán safe?</strong><br>
+                           A: Yes in main visitor areas; use normal precautions.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Best month to visit?</strong><br>
+                           A: Late Apr–May; Aug-Sept; or Dec–Apr for sun (higher prices).</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Do I need Spanish?</strong><br>
+                           A: English is common; Spanish is helpful for offices/taxi drivers.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Can I drink tap water?</strong><br>
+                           A: Only where filtered; verify with your host.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Is Uber available?</strong><br>
+                           A: No; use taxis, private drivers, or water taxis.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: What Time Zone is Roatan?</strong><br>
+                           A: Central Standard Time (CST), no daylight savings</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: What type of electrical receptables are used in Roatan?</strong><br>
+                           A: US standard receptable (110V, U.S. plug type A/B). Travelers from Europe or Asia may need adapter.</p>
+                    </div>
+
+                    <h3>Money</h3>
+                    <div>
+                        <p><strong>Q: Do they take USD?</strong><br>
+                           A: Yes, but bring small, clean bills without rips and tears; change may be in HNL.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Do they take Canadian/other currencies?</strong><br>
+                           A: Typically not. Best to convert to USD/Lempira or use Credit Card.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Best way to get HNL?</strong><br>
+                           A: ATMs (plan for outages/cash shortages).</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Do I tip?</strong><br>
+                           A: 10–15% at restaurants; see the Tipping Guide.</p>
+                    </div>
+
+                    <h3>Transport</h3>
+                    <div>
+                        <p><strong>Q: Rent car or taxis?</strong><br>
+                           A: West Bay/West End typically don’t need a car; Sandy Bay/East End do.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Water taxis?</strong><br>
+                           A: West End ↔ West Bay during daylight hours and calm seas.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Airport transfer time?</strong><br>
+                           A: ~25–35 minutes to West Bay or West End. ~15-20 minutes to Sandy Bay / French Harbour</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Ferry vs flight from mainland Honduras — which is better?</strong><br>
+                           A: Ferries can be cheaper but depend on schedules and can be slower/unreliable in bad weather. Flights are faster and recommended if you’re on a tight schedule.</p>
+                    </div>
+
+                    <h3>Restaurants</h3>
+                    <div>
+                        <p><strong>Q: Where to eat in West Bay?</strong><br>
+                           A: Infinity Bay Beach Club, Iron Shore (Grand Roatán), Kristi’s, Beachers, Thirsty Turtle (beach bar & great pizza). See restaurants guide.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: West End favorites?</strong><br>
+                           A: Sundowners (mostly a bar), Argentinian Grill, Cafe Escondido, Gingers. See restaurants guide.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Vegan/GF options?</strong><br>
+                           A: Most places accommodate; just ask.</p>
+                    </div>
+
+                    <h3>Beaches & Snorkeling</h3>
+                    <div>
+                        <p><strong>Q: Best family beach?</strong><br>
+                           A: West Bay.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Best shore snorkel?</strong><br>
+                           A: West Bay by Grand Roatán/Infinity Bay.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Are there jellyfish?</strong><br>
+                           A: Sometimes in Sep–Oct, but I’ve rarely seen them.</p>
+                    </div>
+
+                    <h3>Diving</h3>
+                    <div>
+                        <p><strong>Q: Wetsuit needed for snorkeling?</strong><br>
+                           A: 3mm shorty or rash guard for most for sun protection, but ok without for shorter snorkel sessions.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Can I do a discover dive?</strong><br>
+                           A: Yes, at multiple shops; book ahead in high season.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Can my kids book bubble maker?</strong><br>
+                           A: Yes, at multiple shops; book ahead in high season.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Whale sharks?</strong><br>
+                           A: Rare around Roatán; more common in Utila.</p>
+                    </div>
+
+                    <h3>Excursions</h3>
+                    <div>
+                        <p><strong>Q: Sloth + monkeys worth it?</strong><br>
+                           A: Yes for families; pair with beach/snorkel.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Private boat day?</strong><br>
+                           A: Best flexibility; confirm licensed captain and safety gear.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Fishing charters?</strong><br>
+                           A: Seasonal pelagics; verify gear, ice, and kill policy.</p>
+                    </div>
+
+                    <h3>Health</h3>
+                    <div>
+                        <p><strong>Q: Vaccines?</strong><br>
+                           A: Standard travel vaccines; consult your doctor.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Mosquitoes/sand fleas?</strong><br>
+                           A: Yes; use repellent and the coconut oil trick.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Pharmacies?</strong><br>
+                           A: Many; common meds available without a U.S. prescription.</p>
+                    </div>
+
+                    <h3>Utilities</h3>
+                    <div>
+                        <p><strong>Q: Do outages happen?</strong><br>
+                           A: Yes; ask if the property has a generator. (Our properties have full generators.)</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Internet speed?</strong><br>
+                           A: 25–150 Mbps is typical in main zones.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Can I work remotely?</strong><br>
+                           A: Yes. Internet widely available, but make sure there is a generator.</p>
+                    </div>
+
+                    <h3>Shopping</h3>
+                    <div>
+                        <p><strong>Q: Big-box stores?</strong><br>
+                           A: No, but there are large grocery stores like Eldon’s and Plaza Mar.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: What’s expensive?</strong><br>
+                           A: Electricity, imported snacks (American brands), and electronics.</p>
+                    </div>
+
+                    <h3>Logistics</h3>
+                    <div>
+                        <p><strong>Q: Is driving hard?</strong><br>
+                           A: Fine on the main road; some potholes and traffic near Coxen hole; Lots of mopeds. East End can be rough in rain.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Parking in West End?</strong><br>
+                           A: Limited; plan to walk inside the village.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Cash or card?</strong><br>
+                           A: Both; some places add a 1–5% fee for cards.</p>
+                    </div>
+
+                    <h3>Family</h3>
+                    <div>
+                        <p><strong>Q: Kids’ activities?</strong><br>
+                           A: Sloth park, shallow beach, boat days, chocolate factory, zipline (age limits apply).</p>
+                    </div>
+
+                    <h3>Events/Seasons</h3>
+                    <div>
+                        <p><strong>Q: Rainy season?</strong><br>
+                           A: Oct–Dec is heaviest; still swimmable.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Semana Santa?</strong><br>
+                           A: Busiest week; book early; beaches are packed.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Sargassum Seaweed?</strong><br>
+                           A: Minimal compared to Mexico/DR. None on the main West Bay beach where our properties are located.</p>
+                    </div>
+
+                    <h3>Safety</h3>
+                    <div>
+                        <p><strong>Q: Night safety?</strong><br>
+                           A: Use taxis after dark; avoid walking isolated roads.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Beach theft?</strong><br>
+                           A: Don’t leave items unattended.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Any scams to watch for?</strong><br>
+                           A: Typical issues include unofficial taxi overcharges, unlicensed tour operators, and people offering “help” at ATMs. Use hotel-recommended transport and tour operators with many positive reviews.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Police/Tourist Police?</strong><br>
+                           A: Numbers are in the Medical/Emergency section.</p>
+                    </div>
+
+                    <h3>Misc.</h3>
+                    <div>
+                        <p><strong>Q: Drones?</strong><br>
+                           A: Allowed with respect; no-fly near the airport; ask resorts.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Smoking/vaping?</strong><br>
+                           A: Restricted in many venues; ask.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: Reef rules?</strong><br>
+                           A: Don’t touch or stand on coral; use reef-safe sunscreen.</p>
+                    </div>
+                    <div>
+                        <p><strong>Q: How to contact locals?</strong><br>
+                           A: WhatsApp is standard; tip for great service.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 
+              ==================================================================
+              HOME TILE GRID
+              This is the default view. It gets hidden when a section is targeted.
+              ==================================================================
+            -->
+            <section id="home" class="page-section">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    
+                    <!-- Tile: Why Roatán -->
+                    <a href="#why-roatan" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🏝️</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Why Travelers Love Roatán</h2>
+                        <p class="text-gray-600 text-sm">What makes this island different from the rest.</p>
+                    </a>
+
+                    <!-- Tile: Where to Stay -->
+                    <a href="#where-to-stay" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🏨</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Where to Stay</h2>
+                        <p class="text-gray-600 text-sm">West Bay vs. West End, Sandy Bay, and more.</p>
+                    </a>
+
+                    <!-- Tile: Before You Travel -->
+                    <a href="#before-you-travel" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">✈️</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Before You Travel</h2>
+                        <p class="text-gray-600 text-sm">Weather, seasons, customs forms, and entry rules.</p>
+                    </a>
+
+                    <!-- Tile: What to Pack -->
+                    <a href="#what-to-pack" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🎒</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">What to Pack</h2>
+                        <p class="text-gray-600 text-sm">Essentials, kid-friendly items, and what to leave home.</p>
+                    </a>
+
+                    <!-- Tile: Arrival & Airport -->
+                    <a href="#arrival" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🛬</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Arrival & Airport (RTB)</h2>
+                        <p class="text-gray-600 text-sm">Navigating the airport, customs, and transfers.</p>
+                    </a>
+
+                    <!-- Tile: Transportation -->
+                    <a href="#transportation" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🚕</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Transportation</h2>
+                        <p class="text-gray-600 text-sm">Taxis, water taxis, and car rental recommendations.</p>
+                    </a>
+
+                    <!-- Tile: Money & Tipping -->
+                    <a href="#money" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">💸</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Money, ATMs & Tipping</h2>
+                        <p class="text-gray-600 text-sm">Using USD vs. Lempira, ATM locations, and tipping guide.</p>
+                    </a>
+
+                    <!-- Tile: Food & Groceries -->
+                    <a href="#food" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🍽️</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Food, Drinks & Groceries</h2>
+                        <p class="text-gray-600 text-sm">Local dishes, grocery stores, and what to bring.</p>
+                    </a>
+
+                    <!-- Tile: Restaurant Picks -->
+                    <a href="#restaurants" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🍴</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Restaurant Recommendations</h2>
+                        <p class="text-gray-600 text-sm">Our personal favorites in West Bay, West End, and beyond.</p>
+                    </a>
+
+                    <!-- Tile: Activities & Tours -->
+                    <a href="#activities" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🎯</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Excursions & Activities</h2>
+                        <p class="text-gray-600 text-sm">Snorkeling, diving, sloths, fishing, and our top picks.</p>
+                    </a>
+
+                    <!-- Tile: Safety & Medical -->
+                    <a href="#safety" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">⚕️</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Safety, Crime & Medical</h2>
+                        <p class="text-gray-600 text-sm">Emergency numbers, clinics, and practical safety tips.</p>
+                    </a>
+
+                    <!-- Tile: Utilities -->
+                    <a href="#utilities" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">🔌</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Power, Internet & Water</h2>
+                        <p class="text-gray-600 text-sm">The truth about generators, Wi-Fi, and utilities.</p>
+                    </a>
+
+                    <!-- Tile: Top FAQs -->
+                    <a href="#faq" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-4xl mb-3">❓</div>
+                        <h2 class="text-xl font-semibold mb-2 text-blue-900">Top FAQs Summarized</h2>
+                        <p class="text-gray-600 text-sm">Quick answers to the most common questions.</p>
+                    </a>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>&copy; 2025 <a href="http://islandinthesunrentals.com" target="_blank" rel="noopener noreferrer" class="hover:underline text-blue-700 font-semibold">Island in the Sun Rentals</a>. All rights reserved.</p>
+            <p>Guide content based on <a href="http://IslandInTheSunRentals.com" target="_blank" rel="noopener noreferrer" class="hover:underline text-blue-600">IslandInTheSunRentals.com</a></p>
+        </footer>
+
+    </div>
