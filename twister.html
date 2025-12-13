@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twister Spinner</title>
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --card:#121a2b;
+      --text:#eaf0ff;
+      --muted:#a9b6d8;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 900px at 50% -20%, #1f2a52 0%, var(--bg) 55%);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .app{
+      width:min(520px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header{
+      padding:18px 18px 12px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+    }
+    h1{
+      font-size:18px;
+      margin:0;
+      letter-spacing:.2px;
+    }
+    .sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+    .pill{
+      font-size:12px;
+      color:var(--muted);
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      user-select:none;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .pill input{transform: translateY(1px)}
+    .content{
+      padding: 0 18px 18px;
+      display:grid;
+      gap:14px;
+    }
+
+    /* Spinner card */
+    .spinner{
+      background: rgba(18,26,43,.78);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding:16px;
+      display:grid;
+      gap:14px;
+    }
+
+    .wheelWrap{
+      position:relative;
+      width:min(360px, 100%);
+      margin: 0 auto;
+      aspect-ratio:1/1;
+      display:grid;
+      place-items:center;
+    }
+    canvas{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35) inset;
+    }
+    .pointer{
+      position:absolute;
+      top:-2px;
+      left:50%;
+      transform: translateX(-50%);
+      width:0;height:0;
+      border-left:12px solid transparent;
+      border-right:12px solid transparent;
+      border-top:18px solid rgba(255,255,255,.92);
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.45));
+    }
+
+    .result{
+      display:grid;
+      gap:8px;
+      text-align:center;
+      padding:6px 0 2px;
+    }
+    .result .big{
+      font-size:22px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .result .small{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    button{
+      appearance:none;
+      border:none;
+      border-radius:16px;
+      padding:14px 14px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      user-select:none;
+      color:#0b0f1a;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.76));
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+      touch-action:manipulation;
+    }
+    button:active{transform: translateY(1px)}
+    .secondary{
+      color:var(--text);
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:none;
+      font-weight:700;
+    }
+
+    /* Options + history */
+    .panel{
+      background: rgba(18,26,43,.60);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding:14px;
+      display:grid;
+      gap:10px;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .row strong{color:var(--text); font-weight:700}
+    .toggles{
+      display:grid;
+      gap:10px;
+    }
+    .toggle{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      background: rgba(255,255,255,.05);
+    }
+    .toggle label{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .toggle .tTitle{color:var(--text); font-size:13px; font-weight:700}
+    .toggle .tHint{color:var(--muted); font-size:12px}
+    .toggle input{transform:scale(1.05)}
+    .history{
+      max-height: 180px;
+      overflow:auto;
+      padding-right:4px;
+    }
+    .histItem{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      background: rgba(255,255,255,.03);
+      margin-bottom:8px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:800;
+      color:var(--text);
+    }
+    .dot{
+      width:14px;height:14px;border-radius:999px;
+      box-shadow: 0 0 0 3px rgba(255,255,255,.08);
+    }
+    .time{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    footer{
+      padding: 0 18px 16px;
+      color: var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    a{color:var(--text)}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <h1>Twister Spinner</h1>
+        <div class="sub">Tap spin. Put the limb on the color. Repeat until someone falls.</div>
+      </div>
+      <div class="pill">
+        <input id="speakQuick" type="checkbox" />
+        <label for="speakQuick">Speak</label>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="spinner">
+        <div class="wheelWrap">
+          <div class="pointer" aria-hidden="true"></div>
+          <canvas id="wheel" width="600" height="600" aria-label="Spinner wheel"></canvas>
+        </div>
+
+        <div class="result" aria-live="polite">
+          <div class="big" id="bigResult">Ready</div>
+          <div class="small" id="smallResult">Tap SPIN to generate a move</div>
+        </div>
+
+        <div class="controls">
+          <button id="spinBtn">SPIN</button>
+          <button id="copyBtn" class="secondary">Copy</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="row"><strong>Options</strong><span>Make it play nicer</span></div>
+
+        <div class="toggles">
+          <div class="toggle">
+            <label>
+              <span class="tTitle">Avoid repeating the last move</span>
+              <span class="tHint">Prevents exact same limb + color twice in a row</span>
+            </label>
+            <input id="avoidRepeat" type="checkbox" checked />
+          </div>
+
+          <div class="toggle">
+            <label>
+              <span class="tTitle">Vibrate on spin</span>
+              <span class="tHint">If your phone supports it</span>
+            </label>
+            <input id="vibrate" type="checkbox" checked />
+          </div>
+
+          <div class="toggle">
+            <label>
+              <span class="tTitle">Hands and feet only</span>
+              <span class="tHint">Standard Twister limbs (default on)</span>
+            </label>
+            <input id="limbsOnly" type="checkbox" checked />
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:6px;">
+          <strong>History</strong>
+          <button id="clearBtn" class="secondary" style="padding:10px 12px; border-radius:14px; font-size:13px;">Clear</button>
+        </div>
+        <div class="history" id="history"></div>
+      </section>
+    </div>
+
+    <footer>
+      Tip: Add this to your Home Screen in Safari (Share → “Add to Home Screen”) so it feels like an app.
+    </footer>
+  </div>
+
+  <script>
+    const COLORS = [
+      { name: "Red",    hex: "#ef4444" },
+      { name: "Blue",   hex: "#3b82f6" },
+      { name: "Green",  hex: "#22c55e" },
+      { name: "Yellow", hex: "#facc15" }
+    ];
+
+    const LIMBS_STANDARD = ["Left Hand", "Right Hand", "Left Foot", "Right Foot"];
+
+    // Wheel has 16 wedges: each limb x each color
+    const WEDGES = [];
+    for (const limb of LIMBS_STANDARD) {
+      for (const c of COLORS) {
+        WEDGES.push({ limb, color: c.name, hex: c.hex });
+      }
+    }
+
+    const canvas = document.getElementById("wheel");
+    const ctx = canvas.getContext("2d");
+    const spinBtn = document.getElementById("spinBtn");
+    const copyBtn = document.getElementById("copyBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const bigResult = document.getElementById("bigResult");
+    const smallResult = document.getElementById("smallResult");
+    const historyEl = document.getElementById("history");
+
+    const speakQuick = document.getElementById("speakQuick");
+    const avoidRepeat = document.getElementById("avoidRepeat");
+    const vibrate = document.getElementById("vibrate");
+    const limbsOnly = document.getElementById("limbsOnly");
+
+    let currentAngle = 0;
+    let spinning = false;
+    let lastPickKey = "";
+    const history = [];
+
+    function drawWheel(angleRad = 0) {
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const size = 600; // internal canvas resolution is fixed in attributes
+      ctx.clearRect(0, 0, size, size);
+
+      const cx = size / 2, cy = size / 2;
+      const radius = size * 0.46;
+      const wedgeCount = WEDGES.length;
+      const step = (Math.PI * 2) / wedgeCount;
+
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(angleRad);
+
+      for (let i = 0; i < wedgeCount; i++) {
+        const w = WEDGES[i];
+        const start = i * step;
+        const end = start + step;
+
+        // Wedge
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, radius, start, end);
+        ctx.closePath();
+        ctx.fillStyle = w.hex;
+        ctx.fill();
+
+        // Divider
+        ctx.strokeStyle = "rgba(0,0,0,.18)";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Text
+        const mid = start + step / 2;
+        ctx.save();
+        ctx.rotate(mid);
+        ctx.translate(radius * 0.64, 0);
+        ctx.rotate(Math.PI / 2);
+        ctx.fillStyle = "rgba(0,0,0,.85)";
+        ctx.font = "800 22px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        const shortLimb = w.limb.replace("Left ", "L ").replace("Right ", "R ");
+        ctx.fillText(shortLimb, 0, -12);
+        ctx.font = "900 26px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+        ctx.fillText(w.color.toUpperCase(), 0, 18);
+        ctx.restore();
+      }
+
+      // Center cap
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.18, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,.9)";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(0,0,0,.10)";
+      ctx.lineWidth = 6;
+      ctx.stroke();
+
+      ctx.fillStyle = "rgba(0,0,0,.80)";
+      ctx.font = "900 26px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("SPIN", 0, 2);
+
+      ctx.restore();
+    }
+
+    function pickMove() {
+      // If "Hands and feet only" is off, you could expand here.
+      // For now it matches standard Twister either way.
+      let pick;
+      let tries = 0;
+      do {
+        pick = WEDGES[Math.floor(Math.random() * WEDGES.length)];
+        tries++;
+        if (!avoidRepeat.checked) break;
+      } while ((pick.limb + "|" + pick.color) === lastPickKey && tries < 25);
+
+      lastPickKey = pick.limb + "|" + pick.color;
+      return pick;
+    }
+
+    function wedgeIndexAtPointer(angleRad) {
+      // Pointer is at "top". We want which wedge lands there after rotation.
+      const wedgeCount = WEDGES.length;
+      const step = (Math.PI * 2) / wedgeCount;
+
+      // Normalize so 0 rad points to the right; our pointer is at -90deg.
+      const pointerAngle = -Math.PI / 2;
+
+      // Effective angle in wheel's local coords:
+      // If wheel rotated by angleRad, pointer sees wheel at -angleRad.
+      let a = pointerAngle - angleRad;
+
+      // Normalize to [0, 2pi)
+      a = (a % (Math.PI * 2) + (Math.PI * 2)) % (Math.PI * 2);
+
+      // Wedge i spans [i*step, (i+1)*step)
+      const idx = Math.floor(a / step);
+      return idx;
+    }
+
+    function speak(text) {
+      try {
+        if (!("speechSynthesis" in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.rate = 1.0;
+        u.pitch = 1.0;
+        u.lang = "en-US";
+        window.speechSynthesis.speak(u);
+      } catch {}
+    }
+
+    function vibratePattern() {
+      if (!vibrate.checked) return;
+      if (navigator.vibrate) navigator.vibrate([20, 30, 20]);
+    }
+
+    function formatMove(move) {
+      return `${move.limb} on ${move.color}`;
+    }
+
+    function addHistory(move) {
+      const t = new Date();
+      history.unshift({ move, time: t });
+      if (history.length > 25) history.pop();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      historyEl.innerHTML = "";
+      if (history.length === 0) {
+        historyEl.innerHTML = `<div class="row" style="justify-content:center; padding:10px 0;">No spins yet</div>`;
+        return;
+      }
+
+      for (const h of history) {
+        const item = document.createElement("div");
+        item.className = "histItem";
+
+        const left = document.createElement("div");
+        left.className = "tag";
+
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.style.background = h.move.hex;
+
+        const txt = document.createElement("span");
+        txt.textContent = formatMove(h.move);
+
+        left.appendChild(dot);
+        left.appendChild(txt);
+
+        const right = document.createElement("div");
+        right.className = "time";
+        right.textContent = h.time.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+
+        item.appendChild(left);
+        item.appendChild(right);
+
+        historyEl.appendChild(item);
+      }
+    }
+
+    async function copyCurrent() {
+      const text = bigResult.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        smallResult.textContent = "Copied to clipboard";
+      } catch {
+        // Fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        smallResult.textContent = "Copied to clipboard";
+      }
+    }
+
+    function spinToMove(targetIndex) {
+      const wedgeCount = WEDGES.length;
+      const step = (Math.PI * 2) / wedgeCount;
+
+      // We want wedge center at pointer.
+      const targetAngle = (-Math.PI / 2) - (targetIndex + 0.5) * step;
+
+      // Add multiple turns for drama.
+      const turns = 5 + Math.random() * 3;
+      const finalAngle = targetAngle + turns * Math.PI * 2;
+
+      const start = currentAngle;
+      const end = finalAngle;
+      const duration = 1600 + Math.random() * 600;
+      const t0 = performance.now();
+
+      spinning = true;
+      spinBtn.disabled = true;
+
+      function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+      function frame(now) {
+        const p = Math.min(1, (now - t0) / duration);
+        const e = easeOutCubic(p);
+        currentAngle = start + (end - start) * e;
+        drawWheel(currentAngle);
+
+        if (p < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          // Normalize to keep numbers small
+          currentAngle = ((currentAngle % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
+          drawWheel(currentAngle);
+
+          spinning = false;
+          spinBtn.disabled = false;
+
+          // Determine landed wedge (for correctness)
+          const landed = wedgeIndexAtPointer(currentAngle);
+          const move = WEDGES[landed];
+
+          bigResult.textContent = formatMove(move);
+          smallResult.textContent = "Tap SPIN again";
+          addHistory(move);
+
+          vibratePattern();
+          if (speakQuick.checked) speak(bigResult.textContent);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function doSpin() {
+      if (spinning) return;
+
+      const move = pickMove();
+      // Find index matching picked move
+      const idx = WEDGES.findIndex(w => w.limb === move.limb && w.color === move.color);
+      spinToMove(idx);
+    }
+
+    // Init
+    drawWheel(0);
+    renderHistory();
+
+    spinBtn.addEventListener("click", doSpin);
+    copyBtn.addEventListener("click", copyCurrent);
+    clearBtn.addEventListener("click", () => {
+      history.length = 0;
+      lastPickKey = "";
+      bigResult.textContent = "Ready";
+      smallResult.textContent = "Tap SPIN to generate a move";
+      renderHistory();
+    });
+
+    // Tap on wheel to spin too
+    canvas.addEventListener("click", doSpin);
+
+    // Prevent double-tap zoom on iOS for buttons
+    let lastTouch = 0;
+    document.addEventListener("touchend", (e) => {
+      const now = Date.now();
+      if (now - lastTouch <= 250) e.preventDefault();
+      lastTouch = now;
+    }, { passive:false });
+  </script>
+</body>
+</html>
