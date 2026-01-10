@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 NFL Playoff Bracket Picker (Dynamic Reseeding)</title>
+    <style>
+        :root {
+            --afc-color: #d50a0a;
+            --nfc-color: #013369;
+            --bg-color: #f4f4f4;
+            --box-bg: #ffffff;
+            --border-color: #ccc;
+            --highlight: #ffd700;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 { margin-bottom: 10px; }
+        p.subtitle { margin-bottom: 30px; color: #666; font-size: 0.9em; }
+
+        /* Container for the whole bracket */
+        .bracket-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        /* Sides (AFC Left, NFC Right) */
+        .conference-column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .conference-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .afc-header { background-color: var(--afc-color); }
+        .nfc-header { background-color: var(--nfc-color); }
+
+        /* Rounds Columns */
+        .rounds-container {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .round-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 180px;
+        }
+
+        .round-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        /* Matchup Box */
+        .matchup {
+            background: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .matchup::after { /* Connector lines logic would go here, simplified for CSS */ }
+
+        /* Team Button */
+        .team {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            margin: 4px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .team:hover {
+            background-color: #e9e9e9;
+        }
+
+        .team.selected {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+        .team.eliminated {
+            opacity: 0.5;
+            text-decoration: line-through;
+            pointer-events: none;
+        }
+
+        .seed {
+            font-size: 0.8em;
+            opacity: 0.7;
+            margin-right: 8px;
+            width: 15px;
+            display: inline-block;
+        }
+
+        .team-name {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* Super Bowl Section */
+        .superbowl-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 220px;
+        }
+
+        .superbowl-box {
+            border: 2px solid #333;
+            padding: 20px;
+            background: white;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sb-logo { font-size: 1.2em; font-weight: 900; margin-bottom: 10px; }
+
+        .winner-box {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #28a745;
+            min-height: 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1000px) {
+            .bracket-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .rounds-container {
+                flex-direction: row; /* Keep rounds horizontal but stack conferences */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .round-column { margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>2026 NFL Playoff Bracket</h1>
+    <p class="subtitle">Select winners to advance. Bracket re-seeds automatically after Wild Card round.</p>
+
+    <div class="bracket-container">
+        <div class="conference-column">
+            <div class="conference-header afc-header">AFC</div>
+            <div class="rounds-container">
+                
+                <div class="round-column" id="afc-wc">
+                    <div class="round-title">Wild Card</div>
+                    <div class="matchup" data-id="afc-wc-1">
+                        <div class="team" onclick="selectWinner('afc', 'wc', 1, 2)">
+                            <span class="seed">2</span><span class="team-name">Patriots</span>
+                        </div>
+                        <div class="team" onclick="selectWinner('afc', 'wc', 1, 7)">
+                            <span class="seed">7</span><span class="team-name">Chargers</span>
+                        </div>
+                    </div>
+                    <div class="matchup" data-id="afc-wc-2">
+                        <div class="team" onclick="selectWinner('afc', 'wc', 2, 3)">
+                            <span class="seed">3</span><span class="team-name">Jaguars</span>
+                        </div>
+                        <div class="team" onclick="selectWinner('afc', 'wc', 2, 6)">
+                            <span class="seed">6</span><span class="team-name">Bills</span>
+                        </div>
+                    </div>
+                    <div class="matchup" data-id="afc-wc-3">
+                        <div class="team" onclick="selectWinner('afc', 'wc', 3, 4)">
+                            <span class="seed">4</span><span class="team-name">Steelers</span>
+                        </div>
+                        <div class="team" onclick="selectWinner('afc', 'wc', 3, 5)">
+                            <span class="seed">5</span><span class="team-name">Texans</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="round-column" id="afc-div">
+                    <div class="round-title">Divisional</div>
+                    <div class="matchup" id="afc-div-1">
+                        <div class="team" data-slot="afc-div-1-home">
+                            <span class="seed">1</span><span class="team-name">Broncos</span>
+                        </div>
+                        <div class="team tbd" data-slot="afc-div-1-away">
+                            <span class="seed">?</span><span class="team-name">Lowest Seed</span>
+                        </div>
+                    </div>
+                    <div class="matchup" id="afc-div-2">
+                        <div class="team tbd" data-slot="afc-div-2-home">
+                            <span class="seed">?</span><span class="team-name">High Seed</span>
+                        </div>
+                        <div class="team tbd" data-slot="afc-div-2-away">
+                            <span class="seed">?</span><span class="team-name">Low Seed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="round-column" id="afc-champ">
+                    <div class="round-title">AFC Champ</div>
+                    <div class="matchup" id="afc-champ-match">
+                        <div class="team tbd" data-slot="afc-champ-home">
+                            <span class="seed"></span><span class="team-name">TBD</span>
+                        </div>
+                        <div class="team tbd" data-slot="afc-champ-away">
+                            <span class="seed"></span><span class="team-name">TBD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="superbowl-column">
+            <div class="superbowl-box">
+                <div class="sb-logo">SUPER BOWL</div>
+                <div class="matchup" id="sb-match" style="width: 100%; border: none; box-shadow: none;">
+                    <div class="team tbd" data-slot="sb-afc">
+                        <span class="seed"></span><span class="team-name">AFC Champ</span>
+                    </div>
+                    <div class="team tbd" data-slot="sb-nfc">
+                        <span class="seed"></span><span class="team-name">NFC Champ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="winner-box" id="final-winner"></div>
+        </div>
+
+        <div class="conference-column">
+            <div class="conference-header nfc-header">NFC</div>
+            <div class="rounds-container" style="flex-direction: row-reverse;">
+                
+                <div class="round-column" id="nfc-wc">
+                    <div class="round-title">Wild Card</div>
+                    <div class="matchup" data-id="nfc-wc-1">
+                        <div class="team" onclick="selectWinner('nfc', 'wc', 1, 2)">
+                            <span class="seed">2</span><span class="team-name">Bears</span>
+                        </div>
+                        <div class="team" onclick="selectWinner('nfc', 'wc', 1, 7)">
+                            <span class="seed">7</span><span class="team-name">Packers</span>
+                        </div>
+                    </div>
+                    <div class="matchup" data-id="nfc-wc-2">
+                        <div class="team" onclick="selectWinner('nfc', 'wc', 2, 3)">
+                            <span class="seed">3</span><span class="team-name">Eagles</span>
+                        </div>
+                        <div class="team" onclick="selectWinner('nfc', 'wc', 2, 6)">
+                            <span class="seed">6</span><span class="team-name">49ers</span>
+                        </div>
+                    </div>
+                    <div class="matchup" data-id="nfc-wc-3">
+                        <div class="team" onclick="selectWinner('nfc', 'wc', 3, 4)">
+                            <span class="seed">4</span><span class="team-name">Panthers</span>
+                        </div>
+                        <div class="team" onclick="selectWinner('nfc', 'wc', 3, 5)">
+                            <span class="seed">5</span><span class="team-name">Rams</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="round-column" id="nfc-div">
+                    <div class="round-title">Divisional</div>
+                    <div class="matchup" id="nfc-div-1">
+                        <div class="team" data-slot="nfc-div-1-home">
+                            <span class="seed">1</span><span class="team-name">Seahawks</span>
+                        </div>
+                        <div class="team tbd" data-slot="nfc-div-1-away">
+                            <span class="seed">?</span><span class="team-name">Lowest Seed</span>
+                        </div>
+                    </div>
+                    <div class="matchup" id="nfc-div-2">
+                        <div class="team tbd" data-slot="nfc-div-2-home">
+                            <span class="seed">?</span><span class="team-name">High Seed</span>
+                        </div>
+                        <div class="team tbd" data-slot="nfc-div-2-away">
+                            <span class="seed">?</span><span class="team-name">Low Seed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="round-column" id="nfc-champ">
+                    <div class="round-title">NFC Champ</div>
+                    <div class="matchup" id="nfc-champ-match">
+                        <div class="team tbd" data-slot="nfc-champ-home">
+                            <span class="seed"></span><span class="team-name">TBD</span>
+                        </div>
+                        <div class="team tbd" data-slot="nfc-champ-away">
+                            <span class="seed"></span><span class="team-name">TBD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data State
+        const state = {
+            afc: {
+                wcWinners: [], // Stores {seed: x, name: y}
+                divWinners: [],
+                champWinner: null
+            },
+            nfc: {
+                wcWinners: [],
+                divWinners: [],
+                champWinner: null
+            },
+            superBowlWinner: null
+        };
+
+        const teams = {
+            afc: { 1: 'Broncos', 2: 'Patriots', 3: 'Jaguars', 4: 'Steelers', 5: 'Texans', 6: 'Bills', 7: 'Chargers' },
+            nfc: { 1: 'Seahawks', 2: 'Bears', 3: 'Eagles', 4: 'Panthers', 5: 'Rams', 6: '49ers', 7: 'Packers' }
+        };
+
+        // Helper to get team name by seed
+        function getTeam(conf, seed) {
+            return teams[conf][seed];
+        }
+
+        function selectWinner(conf, round, matchId, seed) {
+            const teamName = getTeam(conf, seed);
+            
+            // UI Update: Highlight selection, dim loser
+            const matchDiv = round === 'wc' 
+                ? document.querySelector(`div[data-id="${conf}-${round}-${matchId}"]`) 
+                : document.getElementById(`${conf}-${round}-${matchId}`);
+            
+            // Simple toggle logic for UI
+            const buttons = matchDiv.querySelectorAll('.team');
+            buttons.forEach(btn => {
+                const btnSeed = parseInt(btn.querySelector('.seed').innerText);
+                if (btnSeed === seed) {
+                    btn.classList.add('selected');
+                    btn.classList.remove('eliminated');
+                } else {
+                    btn.classList.remove('selected');
+                    btn.classList.add('eliminated');
+                }
+            });
+
+            // Logic Handling
+            if (round === 'wc') {
+                handleWildCardSelection(conf, matchId, seed);
+            } else if (round === 'div') {
+                handleDivisionalSelection(conf, matchId, seed);
+            } else if (round === 'champ') {
+                handleChampSelection(conf, seed);
+            } else if (round === 'sb') {
+                handleSuperBowlSelection(seed, conf); // seed here acts as winner seed, conf as winning conf
+            }
+        }
+
+        function handleWildCardSelection(conf, matchId, seed) {
+            // Update state
+            // Remove any existing winner for this specific match ID if changing pick
+            state[conf].wcWinners = state[conf].wcWinners.filter(w => w.matchId !== matchId);
+            state[conf].wcWinners.push({ matchId: matchId, seed: seed, name: getTeam(conf, seed) });
+
+            // If we have 3 winners, trigger Reseeding Logic
+            if (state[conf].wcWinners.length === 3) {
+                reseedDivisional(conf);
+            }
+        }
+
+        function reseedDivisional(conf) {
+            const winners = state[conf].wcWinners.map(w => w.seed).sort((a, b) => a - b);
+            
+            // Logic: 
+            // Lowest seed (highest number) plays #1
+            // The other two play each other (Higher seed hosts Lower seed)
+            
+            const lowestSeed = winners[winners.length - 1]; // Last in sorted array
+            const remaining = winners.slice(0, 2); // The other two
+
+            // Match 1: #1 vs Lowest Remaining
+            updateSlot(conf, 'div', 1, 'away', lowestSeed);
+            // Click listener for #1 (Seed 1 is static)
+            addClickListener(conf, 'div', 1, 'home', 1);
+            addClickListener(conf, 'div', 1, 'away', lowestSeed);
+
+            // Match 2: Remaining High vs Remaining Low
+            const highSeed = remaining[0];
+            const lowSeed = remaining[1];
+            
+            updateSlot(conf, 'div', 2, 'home', highSeed);
+            updateSlot(conf, 'div', 2, 'away', lowSeed);
+            
+            addClickListener(conf, 'div', 2, 'home', highSeed);
+            addClickListener(conf, 'div', 2, 'away', lowSeed);
+
+            // Reset subsequent rounds if re-picking
+            resetRound(conf, 'champ');
+            resetSuperBowl();
+        }
+
+        function handleDivisionalSelection(conf, matchId, seed) {
+            // Filter out previous winner of this matchId
+            state[conf].divWinners = state[conf].divWinners.filter(w => w.matchId !== matchId);
+            state[conf].divWinners.push({ matchId: matchId, seed: seed, name: getTeam(conf, seed) });
+
+            if (state[conf].divWinners.length === 2) {
+                setupConferenceChamp(conf);
+            }
+        }
+
+        function setupConferenceChamp(conf) {
+            const winners = state[conf].divWinners.map(w => w.seed).sort((a, b) => a - b);
+            // Higher seed (lower number) hosts
+            updateSlot(conf, 'champ', 'match', 'home', winners[0]);
+            updateSlot(conf, 'champ', 'match', 'away', winners[1]);
+
+            addClickListener(conf, 'champ', 'match', 'home', winners[0]);
+            addClickListener(conf, 'champ', 'match', 'away', winners[1]);
+        }
+
+        function handleChampSelection(conf, seed) {
+            state[conf].champWinner = { seed: seed, name: getTeam(conf, seed) };
+            
+            // Update Super Bowl Slot
+            const slot = conf === 'afc' ? 'sb-afc' : 'sb-nfc';
+            const sbTeamDiv = document.querySelector(`div[data-slot="${slot}"]`);
+            sbTeamDiv.innerHTML = `<span class="seed">${seed}</span><span class="team-name">${getTeam(conf, seed)}</span>`;
+            sbTeamDiv.classList.remove('tbd');
+            
+            // Add click listener for Super Bowl
+            sbTeamDiv.onclick = () => selectWinner('sb', 'sb', 'match', seed);
+            
+            // Need to know which conference the seed belongs to for the final check
+            sbTeamDiv.dataset.conf = conf;
+        }
+        
+        function handleSuperBowlSelection(seed) {
+            // Find which conf this seed belongs to from the DOM element clicked or infer from state
+            // Easier: check which conf has this seed as champ winner
+            let winnerName = "";
+            if (state.afc.champWinner && state.afc.champWinner.seed === seed) winnerName = state.afc.champWinner.name;
+            else if (state.nfc.champWinner && state.nfc.champWinner.seed === seed) winnerName = state.nfc.champWinner.name;
+
+            const sbMatch = document.getElementById('sb-match');
+            const buttons = sbMatch.querySelectorAll('.team');
+            
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(winnerName)) {
+                    btn.classList.add('selected');
+                    btn.classList.remove('eliminated');
+                } else {
+                    btn.classList.remove('selected');
+                    btn.classList.add('eliminated');
+                }
+            });
+
+            document.getElementById('final-winner').innerText = `🏆 Champion: ${winnerName}`;
+        }
+
+        // --- DOM Helpers ---
+
+        function updateSlot(conf, round, matchId, slotType, seed) {
+            const slot = document.querySelector(`div[data-slot="${conf}-${round}-${matchId}-${slotType}"]`);
+            slot.innerHTML = `<span class="seed">${seed}</span><span class="team-name">${getTeam(conf, seed)}</span>`;
+            slot.classList.remove('tbd');
+            
+            // Reset styles
+            slot.classList.remove('selected', 'eliminated');
+        }
+
+        function addClickListener(conf, round, matchId, slotType, seed) {
+            const slot = document.querySelector(`div[data-slot="${conf}-${round}-${matchId}-${slotType}"]`);
+            // Remove old listeners by cloning (simple hack) or just reassigning onclick
+            slot.onclick = function() {
+                selectWinner(conf, round, matchId, seed);
+            };
+        }
+
+        function resetRound(conf, round) {
+            if (round === 'champ') {
+                const matchId = 'match';
+                document.querySelector(`div[data-slot="${conf}-champ-match-home"]`).innerHTML = '<span class="seed"></span><span class="team-name">TBD</span>';
+                document.querySelector(`div[data-slot="${conf}-champ-match-away"]`).innerHTML = '<span class="seed"></span><span class="team-name">TBD</span>';
+                state[conf].champWinner = null;
+                state[conf].divWinners = []; // Reset div winners if we went back
+            }
+        }
+        
+        function resetSuperBowl() {
+             document.querySelector(`div[data-slot="sb-afc"]`).innerHTML = '<span class="seed"></span><span class="team-name">AFC Champ</span>';
+             document.querySelector(`div[data-slot="sb-nfc"]`).innerHTML = '<span class="seed"></span><span class="team-name">NFC Champ</span>';
+             document.getElementById('final-winner').innerText = '';
+        }
+
+        // Initialize static listeners for 1 seeds in Divisional
+        // (Wait, actually we can't click them until an opponent exists, so we leave them inactive until reseed)
+    </script>
+</body>
+</html>
