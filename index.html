@@ -3,192 +3,292 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>J&J's Island in the Sun Roatan Vacation Rentals....Your Tropical Island Escape</title>
-  <style>
-    /* --- Global Styles & Fonts --- */
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+  <title>J&amp;J's Island in the Sun Roatan Vacation Rentals....Your Tropical Island Escape</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="images/Top01.jpg">
+
+  <style>
     :root {
-      --primary-color: #0077b6; /* Ocean blue */
-      --secondary-color: #ffffff;
-      --text-color: #333333;
-      --light-gray: #f4f4f4;
-      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      --primary-hover: #005f8e;
+      --primary: #0891B2;        /* Caribbean teal */
+      --primary-dark: #0E7490;
+      --primary-soft: #CFFAFE;
+      --sand: #F5E6D3;
+      --sand-soft: #FAF3E7;
+      --ink: #0F172A;
+      --muted: #64748B;
+      --text: #1F2937;
     }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--light-gray);
-      color: var(--text-color);
+      margin: 0; padding: 0;
+      background: #FFFFFF;
+      color: var(--text);
       line-height: 1.6;
     }
 
-    /* --- Page Structure --- */
+    /* =========================
+       HERO
+    ========================= */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      background: url('images/Top01.jpg') center center / cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; overflow: hidden;
+      padding: 4rem 1rem;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.60) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1; text-align: center;
+      max-width: 900px;
+      animation: heroFade 1.4s ease-out both;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5.5vw, 4rem);
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin: 0 0 1.25rem;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+    .hero-divider {
+      width: 64px; height: 1px;
+      background: rgba(255,255,255,0.75);
+      margin: 1.5rem auto;
+    }
+    .hero p {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      z-index: 1; color: #fff; opacity: 0.8;
+      animation: bounce 2.2s ease-in-out infinite;
+    }
+    .hero-scroll svg { width: 28px; height: 28px; }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* =========================
+       SECTION HEADING
+    ========================= */
+    .section-title {
+      font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-align: center;
+      color: var(--ink);
+      margin: 0;
+    }
+    .section-accent {
+      width: 56px; height: 2px; background: var(--primary);
+      margin: 1rem auto 2.5rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    /* =========================
+       PAGE LAYOUT
+    ========================= */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
+      padding: 5rem 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 3rem 1rem; }
     }
 
-    /* --- Header --- */
-    .header {
-      padding: 2rem 0;
-    }
-
-    .header h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary-color);
-    }
-
-    .header p {
-      font-size: 1.1rem;
-      color: #444;
-      max-width: 800px;
-      margin: 0.75rem auto 0;
-    }
-
-    /* --- Property Selection Grid --- */
+    /* =========================
+       PROPERTY GRID
+    ========================= */
     .properties-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2rem;
-      margin-top: 2rem;
+    }
+    @media (min-width: 768px) {
+      .properties-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* --- Property Tile / Card --- */
+    /* =========================
+       PROPERTY CARD
+    ========================= */
     .property-tile {
-      background-color: var(--secondary-color);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(15,23,42,0.06);
       overflow: hidden;
-      text-align: left;
+      display: flex; flex-direction: column;
+      cursor: pointer;
+      border: 1px solid #F1F5F9;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer; /* whole tile is clickable */
     }
-
     .property-tile:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(8,145,178,0.18);
     }
-
+    .property-tile .img-wrap {
+      position: relative; overflow: hidden;
+    }
     .property-tile img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 280px; object-fit: cover; display: block;
+      transition: transform 0.6s ease;
     }
+    .property-tile:hover img { transform: scale(1.04); }
 
     .property-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+      padding: 1.75rem 1.5rem 2rem;
+      display: flex; flex-direction: column; flex: 1;
       gap: 0.75rem;
     }
-
     .property-content h2 {
-      margin: 0.25rem 0 0.25rem;
-      font-size: 1.8rem;
-      color: var(--text-color);
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink);
       text-align: center;
+      line-height: 1.3;
     }
-
     .property-content h2 a {
-      color: inherit;
-      text-decoration: none;
+      color: inherit; text-decoration: none;
+      transition: color 0.2s ease;
     }
-    .property-content h2 a:hover {
-      text-decoration: underline;
-    }
-
+    .property-content h2 a:hover { color: var(--primary); }
     .property-content p {
-      font-size: 1rem;
-      margin: 0.5rem 0 1rem;
+      font-size: 0.98rem; color: #475569;
+      margin: 0.5rem 0 1.5rem;
+      line-height: 1.6;
     }
 
-    /* --- Buttons --- */
+    /* =========================
+       BUTTONS
+    ========================= */
     .btn-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      align-items: center;
-      margin-top: auto;
+      display: flex; flex-direction: column; gap: 0.7rem;
+      align-items: stretch; margin-top: auto;
     }
-
     .cta-button {
-      display: inline-block;
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      padding: 12px 24px;
-      border-radius: 10px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--primary); color: #fff;
+      padding: 13px 24px;
+      border-radius: 9999px;
       text-decoration: none;
       font-weight: 600;
-      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 20px rgba(8,145,178,0.25);
+      transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      border: 2px solid var(--primary);
     }
     .cta-button:hover {
-      background-color: var(--primary-hover);
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(8,145,178,0.35);
+    }
+    .cta-button svg { width: 16px; height: 16px; stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+
+    .cta-button.alt {
+      background: transparent;
+      color: var(--primary);
+      box-shadow: none;
+    }
+    .cta-button.alt:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(8,145,178,0.35);
     }
 
-    /* Alternate style for Book Now button */
-    .cta-button.alt.book-now {
-      background-color: transparent;
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+      will-change: opacity, transform;
     }
-    .cta-button.alt.book-now:hover {
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-    }
-
-    /* --- Footer --- */
-    .footer {
-      margin-top: 4rem;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: #888;
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-content, .hero-scroll { animation: none; }
     }
 
-    /* --- Responsive Design for Desktops --- */
-    @media (min-width: 768px) {
-      .properties-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .header h1 {
-        font-size: 3.2rem;
-      }
-
-      .header p:first-of-type {
-        font-size: 1.2rem;
-      }
+    /* =========================
+       DARK FOOTER
+    ========================= */
+    .site-footer {
+      background: var(--ink);
+      color: #CBD5E1;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
     }
+    .site-footer a { color: #67E8F9; text-decoration: none; transition: color 0.2s ease; }
+    .site-footer a:hover { color: #A5F3FC; text-decoration: underline; }
+    .site-footer p { margin: 0; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>J&amp;J's Island in the Sun</h1>
+      <div class="hero-divider"></div>
+      <p>Discover paradise in the heart of the Caribbean. Choose your perfect stay and start planning your unforgettable tropical adventure.</p>
+    </div>
+    <a href="#properties" class="hero-scroll" aria-label="Scroll to properties">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
 
-    <header class="header">
-      <h1>J&J's Island in the Sun Roatan Vacation Rentals</h1>
-      <p><em>Discover paradise in the heart of the Caribbean. Choose your perfect stay and start planning your unforgettable tropical adventure.</em></p>
-    </header>
+  <!-- PROPERTIES -->
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title" id="properties">Choose Your Stay</h2>
+      <div class="section-accent"></div>
+      <p class="section-sub">Two beautifully appointed West Bay Beach rentals &mdash; one luxury villa for groups, one oceanfront condo for couples and small families.</p>
+    </div>
 
     <main class="properties-grid">
 
       <!-- Infinity Bay Condo tile -->
-      <div class="property-tile" data-link="https://infinitybay1003.com">
-        <img src="images/IB01.jpg" alt="A 1 bedroom beachfront condo at Infinity Bay">
+      <article class="property-tile reveal" data-link="https://infinitybay1003.com">
+        <div class="img-wrap">
+          <img src="images/IB01.jpg" alt="A 1-bedroom oceanfront condo at Infinity Bay">
+        </div>
         <div class="property-content">
-          <h2><a href="https://infinitybay1003.com">Oceanfront Condo #1003 at Infinity Bay Resort</a></h2>
-          <p>Ideal for couples or small families, this newly renovated one-bedroom, 1.5 bathroom condo with kitchen and private patio is just steps from the sand. Enjoy a full ocean view right from your private patio.</p>
+          <h2><a href="https://infinitybay1003.com">Oceanfront Condo #1003<br>at Infinity Bay Resort</a></h2>
+          <p>Ideal for couples or small families, this newly renovated one-bedroom, 1.5-bathroom condo with kitchen and private patio is just steps from the sand. Enjoy a full ocean view right from your private patio.</p>
 
           <div class="btn-row">
             <a href="https://infinitybay1003.com" class="cta-button">View Condo Details</a>
@@ -196,17 +296,22 @@
               href="https://bnbforms.com/103241/accommodation/infinitybay1003beachfront/"
               class="cta-button alt book-now"
               target="_blank" rel="noopener"
-              >See Availability Calendar / Book Condo Now</a>
+            >
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              See Availability / Book Condo
+            </a>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- Ocean One / Dolphin Villa tile -->
-      <div class="property-tile" data-link="https://dolphinvillaroatan.com">
-        <img src="images/Top01.jpg" alt="A beautiful modern villa with a pool in a tropical setting">
+      <article class="property-tile reveal" data-link="https://dolphinvillaroatan.com">
+        <div class="img-wrap">
+          <img src="images/Top01.jpg" alt="A luxury modern villa with a pool in a tropical setting">
+        </div>
         <div class="property-content">
-          <h2><a href="https://dolphinvillaroatan.com">The Dolphin Villa at Ocean One Roatan</a></h2>
-          <p>Perfect for families or larger groups, this spacious 3 bedroom, 5 bathroom villa surrounds a beautiful pool, is a two minute walk to the center of West Bay Beach, and features a private rooftop jacuzzi. It has all of the modern amenities you need for a luxurious and comfortable stay.</p>
+          <h2><a href="https://dolphinvillaroatan.com">The Dolphin Villa<br>at Ocean One Roatan</a></h2>
+          <p>Perfect for families or larger groups, this spacious 3-bedroom, 5-bathroom villa surrounds a beautiful pool, is a two-minute walk to the center of West Bay Beach, and features a private rooftop jacuzzi. All the modern amenities you need for a luxurious and comfortable stay.</p>
 
           <div class="btn-row">
             <a href="https://dolphinvillaroatan.com" class="cta-button">View Villa Details</a>
@@ -214,43 +319,51 @@
               href="https://bnbforms.com/103241/accommodation/dolphinvilla/"
               class="cta-button alt book-now"
               target="_blank" rel="noopener"
-              >See Availability Calendar / Book Villa Now</a>
+            >
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              See Availability / Book Villa
+            </a>
           </div>
         </div>
-      </div>
+      </article>
 
     </main>
-
-    <footer class="footer">
-      <p>&copy; 2026 J&J's Island in the Sun, S.A. All Rights Reserved.</p>
-    </footer>
-
   </div>
 
+  <footer class="site-footer">
+    <p>&copy; 2026 J&amp;J's Island in the Sun, S.A. &middot; All Rights Reserved.</p>
+  </footer>
+
   <script>
-    // Make the whole tile clickable to the "View Details" link,
-    // EXCEPT when clicking the "Book Now" button (class .book-now).
+    // Whole tile clickable, except for explicit links/buttons inside
     document.querySelectorAll('.property-tile').forEach((tile) => {
       tile.addEventListener('click', (e) => {
         const isBookNow = e.target.closest('.book-now');
         const isAnyLink = e.target.closest('a');
-
-        if (isBookNow) {
-          // Let the Book Now link behave normally (opens booking page)
-          return;
-        }
-
-        if (isAnyLink) {
-          // Let normal links behave (e.g., View Details or title link)
-          return;
-        }
-
+        if (isBookNow) return;
+        if (isAnyLink) return;
         const url = tile.getAttribute('data-link');
-        if (url) {
-          window.location.href = url;
-        }
+        if (url) window.location.href = url;
       });
     });
+
+    // Scroll reveal
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function(el){ el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { io.observe(el); });
+    })();
   </script>
 
 </body>
